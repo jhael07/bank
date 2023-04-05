@@ -1,0 +1,35 @@
+body {
+    background-color: lightgreen;
+    @apply flex justify-center
+    bg-gradient-to-t from-tr-cyan to-blue-800 w-full  md:w-full lg:w-full;
+}
+
+.login__container {
+    width: 100vw !important;
+
+    @apply flex m-auto justify-center;
+}
+.login {
+    @apply w-10/12 bg-transparent h-fit rounded-xl p-3 font-semibold mt-9 flex m-auto;
+   
+}
+
+.logo__img {
+    width: 30% !important;
+    @apply m-auto mt-5;
+}
+
+@media screen and (min-height: 400px) {
+    .login__container {
+        height: 100vh !important;
+    }
+
+    .login {
+        @apply w-full;
+        height: 70%;
+    }
+}
+
+input:focus {
+    outline: none;
+}
