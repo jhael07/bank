@@ -7,7 +7,7 @@ const Register = () => {
     return (
         <div className="login__container">
             <div className="login ">
-                <div>
+                <div className="m-auto">
                     <h1 className="text-center text-xl mt-1 text-white">
                         Register
                     </h1>
@@ -17,53 +17,55 @@ const Register = () => {
                         className="logo__img mb-7"
                     />
 
-                    <form className="grid grid-cols-2 text-center ">
+                    <form>
+                        <div className="grid grid-cols-2 text-center ">
+                            <input
+                                type="text"
+                                className="w-3/4 m-auto mb-4 rounded-md p-1 text-center "
+                                placeholder="Username"
+                            />{" "}
+                            <input
+                                type="password"
+                                className="w-3/4 m-auto mb-4  rounded-md p-1 text-center"
+                                placeholder="Password"
+                            />
+                            <input
+                                type="text"
+                                className="w-3/4 m-auto mb-4 rounded-md p-1 text-center "
+                                placeholder="Nombre"
+                            />{" "}
+                            <input
+                                type="text"
+                                className="w-3/4 m-auto mb-4 rounded-md p-1 text-center "
+                                placeholder="Apellido"
+                            />{" "}
+                            <input
+                                type="text"
+                                className="w-3/4 m-auto mb-4 rounded-md p-1 text-center "
+                                placeholder="Cedula"
+                            />{" "}
+                            <input
+                                type="number"
+                                className="w-3/4 m-auto mb-4 rounded-md p-1 text-center "
+                                placeholder="Telefono"
+                            />
+                        </div>
                         <input
                             type="text"
-                            className="w-3/4 m-auto mb-4 rounded-md p-1 text-center "
-                            placeholder="Username"
-                        />{" "}
-                        <input
-                            type="password"
-                            className="w-3/4 m-auto mb-4  rounded-md p-1 text-center"
-                            placeholder="Password"
-                        />
-                        <input
-                            type="text"
-                            className="w-3/4 m-auto mb-4 rounded-md p-1 text-center "
-                            placeholder="Cedula"
-                        />{" "}
-                        <input
-                            type="text"
-                            className="w-3/4 m-auto mb-4 rounded-md p-1 text-center "
-                            placeholder="Nombre"
-                        />{" "}
-                        <input
-                            type="text"
-                            className="w-3/4 m-auto mb-4 rounded-md p-1 text-center "
-                            placeholder="Apellido"
-                        />{" "}
-                        <input
-                            type="text"
-                            className="w-3/4 m-auto mb-4 rounded-md p-1 text-center "
+                            className="w-3/4 m-auto mb-9 rounded-md p-1 text-center mt-2 flex "
                             placeholder="Dirección"
                         />{" "}
-                        <input
-                            type="number"
-                            className="w-3/4 m-auto mb-4 rounded-md p-1 text-center "
-                            placeholder="Telefono"
-                        />
                         <button
                             onClick={(e) => {
                                 e.preventDefault();
                             }}
-                            className="bg-green-400 w-2/4 m-auto p-1 rounded mt-2"
+                            className="bg-green-400 w-2/4 m-auto p-1 rounded mt-2 flex justify-center"
                         >
                             Submit
                         </button>
                         <Link
                             to="/"
-                            className="mt-3 text-sm font-normal w-2/4 m-auto text-white"
+                            className="mt-3 text-sm font-normal w-2/4 m-auto text-white flex justify-center"
                         >
                             Sign in
                         </Link>

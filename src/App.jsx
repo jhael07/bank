@@ -6,8 +6,8 @@ export default function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route element={<Login />} path="./"></Route>
-                <Route element={<Register />} path="./register"></Route>
+                <Route element={<Login />} path="/"></Route>
+                <Route element={<Register />} path="/register"></Route>
             </Routes>
         </BrowserRouter>
     );
