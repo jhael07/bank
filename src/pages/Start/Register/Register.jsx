@@ -9,7 +9,7 @@ const Register = () => {
             <div className="login ">
                 <div className="m-auto register__content">
                     <h1 className="text-center text-xl mt-1 text-white">
-                        Register
+                        Registerss
                     </h1>
                     <img
                         src={logo}
