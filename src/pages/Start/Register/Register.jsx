@@ -7,7 +7,7 @@ const Register = () => {
     return (
         <div className="login__container">
             <div className="login ">
-                <div className="m-auto">
+                <div className="m-auto register__content">
                     <h1 className="text-center text-xl mt-1 text-white">
                         Register
                     </h1>
@@ -35,12 +35,12 @@ const Register = () => {
                                 placeholder="Nombre"
                             />{" "}
                             <input
-                                type="number"
+                                type="text"
                                 className="w-3/4 m-auto mb-4 rounded-md p-1 text-center "
                                 placeholder="Apellido"
                             />{" "}
                             <input
-                                type="text"
+                                type="number"
                                 className="w-3/4 m-auto mb-4 rounded-md p-1 text-center "
                                 placeholder="Cedula"
                             />{" "}

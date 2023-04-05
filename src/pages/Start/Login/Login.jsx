@@ -7,8 +7,8 @@ const Login = () => {
     return (
         <div className="login__container">
             <div className="login ">
-                <div className="m-auto">
-                    <h1 className="text-center text-white text-xl mt-1">
+                <div className="m-auto login__content">
+                    <h1 className="text-center text-white text-xl mt-1 ">
                         Login
                     </h1>
                     <img
