@@ -2,6 +2,7 @@ body {
     background-color: lightgreen;
     @apply flex justify-center
     bg-gradient-to-t from-tr-cyan to-blue-800 w-full  md:w-full lg:w-full;
+    background-attachment: fixed;
 }
 
 .login__container {
