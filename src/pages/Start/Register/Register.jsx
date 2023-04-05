@@ -35,7 +35,7 @@ const Register = () => {
                                 placeholder="Nombre"
                             />{" "}
                             <input
-                                type="text"
+                                type="number"
                                 className="w-3/4 m-auto mb-4 rounded-md p-1 text-center "
                                 placeholder="Apellido"
                             />{" "}
