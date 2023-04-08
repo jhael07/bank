@@ -1,71 +1,69 @@
 body {
-    background-color: lightgreen;
-    @apply flex justify-center
-    bg-gradient-to-t from-tr-cyan to-blue-800 w-full  md:w-full lg:w-full;
+  background-color: lightgreen;
+  background-attachment: fixed;
+  @apply flex justify-center items-center bg-gradient-to-t from-tr-cyan to-blue-800 !important;
 }
 
 .login__container {
-    width: 100vw !important;
-
-    @apply flex m-auto justify-center;
+  @apply flex m-auto justify-center;
 }
 .login {
-    @apply w-10/12 bg-transparent h-fit rounded-xl p-3 font-semibold mt-9 flex m-auto;
+  @apply w-10/12 bg-transparent h-fit rounded-xl p-3 font-semibold  flex m-auto absolute top-14;
 }
 
 .logo__img {
-    width: 30% !important;
-    @apply m-auto mt-5;
+  width: 30% !important;
+  @apply m-auto mt-5;
 }
 
-@media screen and (min-height: 543.33px) {
-    .login__container {
-        height: 100vh !important;
-    }
-
-    .login {
-        @apply w-full;
-        height: 70%;
-    }
+.login__content button {
+  @apply w-40 p-2 top-7 hover:bg-green-500 hover:shadow-md active:scale-90 hover:transition-all hover:text-white !important;
 }
+
+.register__content button {
+  @apply w-40 p-2  hover:bg-green-500 hover:shadow-md active:scale-90 hover:transition-all hover:text-white !important;
+}
+
+@media screen and (min-height: 400px) {
+  .login {
+    @apply top-12;
+  }
+}
+
+/* * Height for smartphones responsive desgin */
+@media screen and (min-height: 667px) {
+  .login {
+    @apply top-20;
+  }
+}
+
+/* * width for tablets responsive desgin */
 
 @media screen and (min-width: 800px) {
-    .login__container {
-        height: 100vh !important;
-    }
+  input {
+    @apply w-64 p-2 !important;
+  }
 
-    .login {
-        @apply w-full top-0;
-        height: 70%;
-    }
+  .register__content input {
+    @apply w-44 p-2 !important;
+  }
+}
 
-    .login__content {
-        @apply w-6/12;
-    }
-    .register__content {
-        @apply w-6/12 top-0;
-    }
-    .login__content input {
-        @apply w-6/12 p-2;
-    }
+/* * width for desktop responsive desgin */
 
-    .login__content img {
-        @apply w-36 !important;
-    }
-    .register__content button {
-        @apply w-40 p-2  hover:bg-green-500 hover:shadow-md active:scale-90 hover:transition-all hover:text-white !important;
-    }
-    .register__content img {
-        @apply w-36 !important;
-    }
-    .login__content button {
-        @apply w-40 p-2 hover:bg-green-500 hover:shadow-md active:scale-90 hover:transition-all hover:text-white !important;
-    }
-    .register__content input {
-        @apply w-10/12 p-2;
-    }
+@media screen and (min-width: 912px) {
+  input {
+    @apply w-64 p-2 !important;
+  }
+
+  .register__content input {
+    @apply w-44 p-2 !important;
+  }
+
+  .login__container {
+  }
 }
 
 input:focus {
-    outline: none;
+  outline: none;
 }
