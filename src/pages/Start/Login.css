@@ -1,3 +1,5 @@
+@import "media-query.css";
+
 body {
   background-color: lightgreen;
   background-attachment: fixed;
@@ -25,7 +27,6 @@ body {
 }
 
 /* * Register section inputs style */
-
 .register__input {
   @apply w-3/4 m-auto mb-4 rounded-md p-1 text-center;
 }
@@ -46,41 +47,8 @@ body {
   @apply mt-3 text-sm font-normal w-2/4 m-auto text-white flex justify-center;
 }
 
-@media screen and (min-height: 400px) {
-  .login {
-    @apply top-12;
-  }
-}
-
-/* * Height for smartphones responsive desgin */
-@media screen and (min-height: 667px) {
-  .login {
-    @apply top-20;
-  }
-}
-
-/* * width for tablets responsive desgin */
-
-@media screen and (min-width: 800px) {
-  input {
-    @apply w-64 p-2 !important;
-  }
-
-  .register__content input {
-    @apply w-44 p-2 !important;
-  }
-}
-
-/* * width for desktop responsive desgin */
-
-@media screen and (min-width: 912px) {
-  input {
-    @apply w-64 p-2 !important;
-  }
-
-  .register__content input {
-    @apply w-44 p-2 !important;
-  }
+.login__input {
+  @apply w-3/4 m-auto mb-7 rounded-md p-1 text-center;
 }
 
 input:focus {

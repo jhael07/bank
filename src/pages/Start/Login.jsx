@@ -11,31 +11,14 @@ const Login = () => {
           <h1 className="text-center text-white text-xl mt-1 ">Login</h1>
           <img src={logo} alt="logo icono" className="logo__img mb-7" />
           <form className="grid text-center ">
-            <input
-              type="text"
-              className="w-3/4 m-auto mb-7 rounded-md p-1 text-center "
-              placeholder="Username"
-            />
+            <input type="text" className="login__input" placeholder="Username" />
+            <input type="password" className="login__input mb-4" placeholder="Password" />
 
-            <input
-              type="password"
-              className="w-3/4 m-auto mb-4  rounded-md p-1 text-center"
-              placeholder="Password"
-            />
-
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-              }}
-              className="bg-green-400 w-2/4 m-auto p-1 rounded mt-2"
-            >
+            <button onClick={(e) => e.preventDefault()} className="start__btn">
               Submit
             </button>
 
-            <Link
-              to="/register"
-              className="lin mt-3 text-sm font-normal w-2/4 m-auto text-white"
-            >
+            <Link to="/register" className="extra-option">
               Create a new account
             </Link>
           </form>

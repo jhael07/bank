@@ -1,0 +1,34 @@
+@media screen and (min-height: 400px) {
+  .login {
+    @apply top-12;
+  }
+}
+
+/* * Height for smartphones responsive desgin */
+@media screen and (min-height: 667px) {
+  .login {
+    @apply top-20;
+  }
+}
+
+/* * width for tablets responsive desgin */
+@media screen and (min-width: 800px) {
+  input {
+    @apply w-64 p-2 !important;
+  }
+
+  .register__content input {
+    @apply w-44 p-2 !important;
+  }
+}
+
+/* * width for desktop responsive desgin */
+@media screen and (min-width: 912px) {
+  input {
+    @apply w-64 p-2 !important;
+  }
+
+  .register__content input {
+    @apply w-44 p-2 !important;
+  }
+}
