@@ -1,5 +1,5 @@
 import React from "react";
-import "./Login.css";
+import "./css/Login.css";
 import logo from "../../assets/img/Login/login__icon.png";
 import { Link } from "react-router-dom";
 
@@ -11,7 +11,7 @@ const Register = () => {
           <h1 className="text-center text-xl mt-1 text-white">Register</h1>
           <img src={logo} alt="logo icono" className="logo__img mb-7" />
           <form>
-            <div className="grid grid-cols-2 text-center ">
+            <div className="grid grid-cols-2 text-center mt-7">
               <input type="text" className="register__input" placeholder="Username" />
               <input type="password" className="register__password" placeholder="Password" />
               <input type="text" className="register__input" placeholder="Nombre" />

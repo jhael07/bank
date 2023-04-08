@@ -1,5 +1,5 @@
 import React from "react";
-import "./Login.css";
+import "./css/Login.css";
 import logo from "../../assets/img/Login/login__icon.png";
 import { Link } from "react-router-dom";
 
@@ -10,7 +10,7 @@ const Login = () => {
         <div className="m-auto login__content">
           <h1 className="text-center text-white text-xl mt-1 ">Login</h1>
           <img src={logo} alt="logo icono" className="logo__img mb-7" />
-          <form className="grid text-center ">
+          <form className="grid text-center mt-6">
             <input type="text" className="login__input" placeholder="Username" />
             <input type="password" className="login__input mb-4" placeholder="Password" />
 
