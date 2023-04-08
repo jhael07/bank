@@ -24,6 +24,28 @@ body {
   @apply w-40 p-2  hover:bg-green-500 hover:shadow-md active:scale-90 hover:transition-all hover:text-white !important;
 }
 
+/* * Register section inputs style */
+
+.register__input {
+  @apply w-3/4 m-auto mb-4 rounded-md p-1 text-center;
+}
+
+.register__password {
+  @apply w-3/4 m-auto mb-4 rounded-md p-1 text-center;
+}
+
+.register__direccion {
+  @apply w-3/4 m-auto mb-9 rounded-md p-1 text-center mt-2 flex;
+}
+
+.start__btn {
+  @apply bg-green-400 w-2/4 m-auto p-1 rounded mt-2 flex justify-center;
+}
+
+.extra-option {
+  @apply mt-3 text-sm font-normal w-2/4 m-auto text-white flex justify-center;
+}
+
 @media screen and (min-height: 400px) {
   .login {
     @apply top-12;
@@ -58,9 +80,6 @@ body {
 
   .register__content input {
     @apply w-44 p-2 !important;
-  }
-
-  .login__container {
   }
 }
 
