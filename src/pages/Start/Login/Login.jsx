@@ -8,7 +8,7 @@ const Login = () => {
     <div className="login__container">
       <div className="login ">
         <div className="m-auto login__content">
-          <h1 className="text-center text-white text-xl mt-1 ">Login</h1>
+          <h1 className="text-center text-white text-xl mt-1 ">s</h1>
           <img src={logo} alt="logo icono" className="logo__img mb-7" />
           <form className="grid text-center ">
             <input
