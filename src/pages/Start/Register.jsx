@@ -1,6 +1,6 @@
 import React from "react";
-import "../Login/Login.css";
-import logo from "../../../assets/img/Login/login__icon.png";
+import "./Login.css";
+import logo from "../../assets/img/Login/login__icon.png";
 import { Link } from "react-router-dom";
 
 const Register = () => {
