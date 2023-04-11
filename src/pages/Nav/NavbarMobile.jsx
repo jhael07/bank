@@ -40,7 +40,7 @@ const NavbarMobile = () => {
       <ul className="list">
         <div className="close-nav-mobile">
           {/* prettier-ignore */}
-          <p className="closeAnimation  text-3xl " onClick={removeAnimation} style={{ left: "-0.3rem" }}>
+          <p className="closeAnimation text-white  " onClick={removeAnimation} style={{ left: "-0.3rem" }}>
               &times;
             </p>
         </div>
