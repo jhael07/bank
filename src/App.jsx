@@ -10,6 +10,14 @@ export default function App() {
         <Route element={<Login />} path="/"></Route>
         <Route element={<Register />} path="/register"></Route>
         <Route element={<HomeCustomer />} path="/Home/customer"></Route>
+        <Route
+          element={
+            <div>
+              <h1>404 PAGE NOT FOUND</h1>
+            </div>
+          }
+          path="*"
+        ></Route>
       </Routes>
     </BrowserRouter>
   );
