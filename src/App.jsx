@@ -11,12 +11,12 @@ export default function App() {
         <Route element={<Register />} path="/register"></Route>
         <Route element={<HomeCustomer />} path="/Home/customer"></Route>
         <Route
+          path="*"
           element={
             <div>
-              <h1>404 PAGE NOT FOUND</h1>
+              <h1 className="text-white text-8xl mt-24">404 PAGE NOT FOUND</h1>
             </div>
           }
-          path="*"
         ></Route>
       </Routes>
     </BrowserRouter>
