@@ -1,3 +1,5 @@
+@import "../../../animation/zoom.css";
+
 /* This is the style for the dekstop version of the bank app */
 .navbar-desktop {
   width: 100vw !important;
@@ -82,5 +84,5 @@
 
 .closeAnimation {
   animation: nav-option-remove-animation 0.1s;
-  @apply right-0.5 px-4 text-5xl mb-1 text-right absolute hover:cursor-pointer z-40 text-red-400 hover:text-red-700;
+  @apply right-0.5 px-4 text-5xl mb-1 text-right u--zoomOut absolute hover:cursor-pointer z-40 text-red-400 hover:text-red-700;
 }
