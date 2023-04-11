@@ -7,7 +7,7 @@ const HomeCustomer = () => {
       {/* <NavbarDesktop /> */}
       <NavbarMobile />
       <div className="bg-white p-4 ">
-        <div className="w-11/12 bg-blue-500 flex m-auto">klk</div>
+        <div className="w-11/12 bg-blue-500 flex m-auto p-2 tex">klk</div>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio quasi pariatur
           repellendus aut, facilis ab temporibus, rerum molestiae cumque fugit similique nisi

@@ -1,7 +1,7 @@
 import Login from "./pages/Start/Login";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Register from "./pages/Start/Register";
-import HomeCustomer from "./pages/Home/HomeCustomer";
+import HomeCustomer from "./pages/Home/homeCustomer";
 
 export default function App() {
   return (

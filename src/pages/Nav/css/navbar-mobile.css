@@ -1,0 +1,74 @@
+@import "../../../animation/zoom.css";
+
+/* Mobile navbar styles */
+.list {
+  width: 100vw;
+  height: 100% !important;
+  z-index: 999;
+  background-attachment: fixed;
+  position: absolute;
+  right: 0;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+  @apply grid grid-cols-1  text-center m-auto  bg-cyan-700  text-white text-2xl  justify-center !important;
+}
+
+.list a {
+  width: 100 !important;
+  @apply hover:bg-white hover:text-blue-900 m-auto w-full py-6 justify-center;
+}
+
+.nav-option__mobile {
+  @apply grid w-8 gap-2 hover:cursor-pointer;
+}
+
+@keyframes nav-option-animation {
+  0% {
+    left: -800px;
+    width: 80vw;
+    visibility: visible;
+  }
+
+  25% {
+    left: -700px;
+  }
+
+  100% {
+    width: 100vw;
+    left: 0;
+  }
+}
+
+@keyframes nav-option-remove-animation {
+  0% {
+    left: 0px;
+  }
+
+  25% {
+    left: -700px;
+  }
+
+  100% {
+    width: 100vw;
+    left: -1000;
+    visibility: hidden;
+  }
+}
+
+.navAnimation {
+  animation: nav-option-animation 0.3s;
+}
+
+.closeAnimation {
+  animation: nav-option-remove-animation 0.1s;
+  @apply right-0.5 px-4 text-5xl mb-1 text-right u--zoomOut absolute hover:cursor-pointer z-40 text-red-400 hover:text-red-700;
+}
+
+.close-nav-mobile {
+  border-radius: 100%;
+  height: 3rem;
+  width: 3rem;
+  @apply bg-white mt-3 right-3.5 flex justify-center text-center absolute active:bg-gray-400 active:text-red-900;
+}
