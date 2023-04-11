@@ -1,11 +1,11 @@
 import Login from "./pages/Start/Login";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import Register from "./pages/Start/Register";
 import HomeCustomer from "./pages/Home/HomeCustomer";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route element={<Login />} path="/"></Route>
         <Route element={<Register />} path="/register"></Route>
@@ -19,6 +19,6 @@ export default function App() {
           }
         ></Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
