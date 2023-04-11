@@ -13,13 +13,14 @@ const Login = () => {
           <form className="grid text-center mt-6">
             <input type="text" className="login__input" placeholder="Username" />
             <input type="password" className="login__input mb-4" placeholder="Password" />
-
             <button onClick={(e) => e.preventDefault()} className="start__btn">
               Submit
             </button>
-
             <Link to="/register" className="extra-option">
               Create a new account
+            </Link>{" "}
+            <Link to="/home/customer" className="extra-option">
+              Hub
             </Link>
           </form>
         </div>
