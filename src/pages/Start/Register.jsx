@@ -10,17 +10,13 @@ const Register = () => {
   const { info } = useContext(PagesContext);
 
   // SETTING THE CLIENT CONTEXT STATE
-  const { clientes, alert: showAlertMessage } = info;
+  const { clientes, alert: showAlertMessage, form: handleChange } = info;
   const [infoCliente, setInfoCliente] = useState(clientes.cliente);
 
-  // FUNCTION TO HANDLE THE CHANGES ON THE INPUTS
-  const handleChange = (key, value) => {
-    setInfoCliente({ ...infoCliente, [key]: value });
-  };
-
   // FUNCTION TO CHECK IF ALL INPUTS ARE FILL OUT
-  const validation = () => {
+  const validation = async () => {
     const { cedula, password, nombre, apellido, direccion, telefono } = infoCliente;
+
     if (
       !cedula.length ||
       !password.length ||
@@ -34,8 +30,7 @@ const Register = () => {
       return;
     }
 
-    // FUNCTION THAT SEND THE POST REQUEST TO THE API
-    addCliente(
+    const success = await addCliente(
       infoCliente.cedula,
       infoCliente.nombre,
       infoCliente.password,
@@ -44,15 +39,17 @@ const Register = () => {
       infoCliente.telefono
     );
 
-    // SUCCESS MESSAGE
-    showAlertMessage(
-      "Usuario creado exitosamente",
-      "El cliente fue agregado existosamente, inicie sessión con la cedúla y contraseña",
-      "success"
-    );
+    if (success) {
+      // SUCCESS MESSAGE
+      showAlertMessage(
+        "Usuario creado exitosamente",
+        "El cliente fue agregado existosamente, inicie sessión con la cedúla y la contraseña",
+        "success"
+      );
 
-    // AFTER SUCCESS, REMOVE TEXT IN INPUTS
-    setInfoCliente(clientes.cliente);
+      // AFTER SUCCESS, REMOVE TEXT IN ALL INPUTS
+      setInfoCliente(clientes.cliente);
+    }
   };
 
   return (
@@ -68,42 +65,54 @@ const Register = () => {
                 className="register__input"
                 placeholder="Nombre"
                 value={infoCliente?.nombre}
-                onChange={(e) => handleChange("nombre", e.target.value)}
+                onChange={(e) =>
+                  handleChange(setInfoCliente, infoCliente, "nombre", e.target.value)
+                }
               />
               <input
                 type="text"
                 className="register__input"
                 placeholder="Apellido"
                 value={infoCliente?.apellido}
-                onChange={(e) => handleChange("apellido", e.target.value)}
+                onChange={(e) =>
+                  handleChange(setInfoCliente, infoCliente, "apellido", e.target.value)
+                }
               />
               <input
                 type="number"
                 className="register__input "
                 placeholder="Cedula"
                 value={infoCliente?.cedula}
-                onChange={(e) => handleChange("cedula", e.target.value)}
+                onChange={(e) =>
+                  handleChange(setInfoCliente, infoCliente, "cedula", e.target.value)
+                }
               />
               <input
                 type="password"
                 className="register__password"
                 placeholder="Password"
                 value={infoCliente?.password}
-                onChange={(e) => handleChange("password", e.target.value)}
+                onChange={(e) =>
+                  handleChange(setInfoCliente, infoCliente, "password", e.target.value)
+                }
               />
               <input
                 type="number"
                 className="register__input "
                 placeholder="Telefono"
                 value={infoCliente?.telefono}
-                onChange={(e) => handleChange("telefono", e.target.value)}
+                onChange={(e) =>
+                  handleChange(setInfoCliente, infoCliente, "telefono", e.target.value)
+                }
               />
               <input
                 type="text"
                 className="register__input"
                 placeholder="Dirección"
                 value={infoCliente?.direccion}
-                onChange={(e) => handleChange("direccion", e.target.value)}
+                onChange={(e) =>
+                  handleChange(setInfoCliente, infoCliente, "direccion", e.target.value)
+                }
               />
             </div>
 

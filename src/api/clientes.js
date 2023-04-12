@@ -31,8 +31,11 @@ export const addCliente = async (cedula, nombre, password, apellido, direccion, 
 
     if (result.isError)
       throw new Error("La cedula ingresada ya está registrada con otro usuario");
+
+    return true;
   } catch (err) {
     showAlertMessage("Error", err.message, "error");
+    return false;
   }
 };
 
