@@ -1,5 +1,6 @@
 import React from "react";
 import "./css/navbar-mobile.css";
+import "./css/media-query.css";
 import Logo from "../../assets/img/logo.png";
 import "../../animation/attention.css";
 
@@ -22,7 +23,7 @@ const NavbarMobile = () => {
   return (
     <>
       {/* this is how the menu looks when is not been display by the user */}
-      <div className="m-auto bg-white navbar-desktop shadow-md">
+      <div className="m-auto bg-white navbar-mobile shadow-md">
         <div className=" flex justify-between w-full items-center  pr-5">
           <a href="/" className="flex  items-center">
             <img src={Logo} className="w-16 mx-3" />

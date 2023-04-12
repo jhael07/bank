@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./css/Login.css";
 import logo from "../../assets/img/Login/login__icon.png";
 import { Link } from "react-router-dom";
+import PagesContext from "../../context/PagesContext";
 
 const Login = () => {
   return (

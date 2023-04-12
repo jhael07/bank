@@ -1,0 +1,20 @@
+@media screen and (max-width: 800px) {
+  .navbar-desktop {
+    display: none;
+  }
+  .navbar-desktop__container {
+    @apply w-full !important;
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  .navbar-desktop__container {
+    @apply w-10/12  !important;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .navbar-mobile {
+    display: none;
+  }
+}

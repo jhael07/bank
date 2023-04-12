@@ -4,7 +4,7 @@ import { NavbarDesktop, NavbarMobile } from "../Nav/index";
 const HomeCustomer = () => {
   return (
     <div className="bg-white">
-      {/* <NavbarDesktop /> */}
+      <NavbarDesktop />
       <NavbarMobile />
       <div className="bg-white p-4 ">
         <div className="w-11/12 bg-blue-500 flex m-auto p-2 tex">klk</div>
