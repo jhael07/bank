@@ -14,18 +14,16 @@ export const login = async (info) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        cedula: "1234",
+        cedula: info.username,
         password: info.password,
       }),
     });
 
     const result = await login.json();
-
-    if (!result.error) {
-      showAlertMessage("Session iniciada", "", "success");
-      return true;
-    } else {
+    if (result.isError) {
       throw new Error("el usuario o la contraseña no es correcto.");
+    } else {
+      return true;
     }
   } catch (err) {
     showAlertMessage("Error", err.message, "error");
