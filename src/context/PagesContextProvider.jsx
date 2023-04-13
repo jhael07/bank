@@ -3,6 +3,9 @@ import PagesContext from "./PagesContext";
 import Swal from "sweetalert2";
 
 const PagesContextProvider = (props) => {
+  // USER INFO
+  const [user, setUser] = useState(null);
+
   const [cliente, SetCliente] = useState({
     cedula: "",
     password: "",
@@ -22,10 +25,15 @@ const PagesContextProvider = (props) => {
     setter({ ...defaultValue, [key]: value });
   };
 
+  // SESSION FOR THE USER
+  const [session, setSession] = useState(false);
+
   const info = {
     clientes: { cliente, SetCliente, allClientes, setAllClientes },
     alert: showAlertMessage,
     form: handleChangeOnForm,
+    user: { user, setUser },
+    session: { session, setSession },
   };
 
   return <PagesContext.Provider value={{ info }}>{props.children}</PagesContext.Provider>;

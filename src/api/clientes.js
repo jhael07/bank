@@ -1,7 +1,4 @@
-// API URL
-const url = "http://localhost:8080/api/v1/";
-
-// ALERT LIBRARY
+import url from "./api";
 import Swal from "sweetalert2";
 
 // FUNCTION TO DISPLAY ALERTS
@@ -28,7 +25,7 @@ export const addCliente = async (cedula, nombre, password, apellido, direccion, 
     });
 
     const result = await request.json();
-
+    console.log(result);
     if (result.isError)
       throw new Error("La cedula ingresada ya está registrada con otro usuario");
 
@@ -40,4 +37,15 @@ export const addCliente = async (cedula, nombre, password, apellido, direccion, 
 };
 
 // GET ALL CLIENTS FROM THE DB
-const getAllClientes = async () => {};
+export const getAllClientes = async () => {
+  try {
+    const request = await fetch(url + "cliente");
+
+    const result = await request.json();
+
+    return result;
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
