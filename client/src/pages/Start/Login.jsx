@@ -10,7 +10,7 @@ import { encrypt, decrypt } from "n-krypta";
 const Login = () => {
   //  GETTING ALL THE INFO NEEDED FROM THE CONTEXT
   const { info } = useContext(PagesContext);
-  const { form: handleChangeOnForm, session } = info;
+  const { form: handleChangeOnForm, session, account } = info;
 
   useEffect(() => {
     session.setSession(localStorage.getItem("session"));
@@ -37,6 +37,8 @@ const Login = () => {
         localStorage.setItem("session", true);
         session.setSession(true);
         localStorage.setItem("user", accountInfo);
+
+        // SAVING THE ACCOUNT INFO IN THE LOCALSTORAGE
       }
     } catch (err) {
       // IF THERE IS AN ERROR, SEND IT TO THE CONSOLE
