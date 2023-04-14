@@ -21,8 +21,11 @@ export const login = async (info) => {
     });
 
     const result = await login.json();
+
     if (result.isError) {
       throw new Error("el usuario o la contraseña no es correcto.");
+    } else if (result.error) {
+      throw new Error(result.error);
     } else {
       return true;
     }

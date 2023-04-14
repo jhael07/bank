@@ -5,6 +5,12 @@ import Logo from "../../assets/img/logo.png";
 import "../../animation/attention.css";
 
 const NavbarMobile = () => {
+  // FUNCTION TO CLOSE SESSION
+  const logout = () => {
+    localStorage.removeItem("session");
+    localStorage.removeItem("user");
+  };
+
   const animation = () => {
     // * this is the animation to show the navbar
     const navMobile = document.querySelector(".list");
@@ -49,8 +55,10 @@ const NavbarMobile = () => {
           <a href="/">Inicio</a>
           <a href="#">Prestamos</a>
           <a href="#">Cuentas</a>
-          <a href="#">Solicitar Cuenta</a>
           <a href="#">Configuración</a>
+          <a href="#" onClick={logout}>
+            <span className="hover:text-red-500">Cerrar Sessión</span>
+          </a>
         </div>
       </ul>
     </>

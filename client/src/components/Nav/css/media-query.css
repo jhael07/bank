@@ -17,4 +17,8 @@
   .navbar-mobile {
     display: none;
   }
+
+  .list {
+    visibility: hidden;
+  }
 }

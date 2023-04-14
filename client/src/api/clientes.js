@@ -1,4 +1,4 @@
-import url from "./api";
+import url, { basicAuth } from "./api";
 import Swal from "sweetalert2";
 
 // FUNCTION TO DISPLAY ALERTS
@@ -10,6 +10,7 @@ export const addCliente = async (cedula, nombre, password, apellido, direccion, 
     const request = await fetch(url + "cliente/new", {
       method: "POST",
       headers: {
+        Authorization: "Basic " + btoa(basicAuth),
         Accept: "application.json",
         "Content-Type": "application/json",
       },
@@ -25,9 +26,16 @@ export const addCliente = async (cedula, nombre, password, apellido, direccion, 
     });
 
     const result = await request.json();
-    console.log(result);
+
     if (result.isError)
       throw new Error("La cedula ingresada ya está registrada con otro usuario");
+    else {
+      showAlertMessage(
+        "Usuario agregado!!",
+        `Usuario ${nombre} ${apellido} agregado existosamente`,
+        "success"
+      );
+    }
 
     return true;
   } catch (err) {
@@ -39,7 +47,13 @@ export const addCliente = async (cedula, nombre, password, apellido, direccion, 
 // GET ALL CLIENTS FROM THE DB
 export const getAllClientes = async () => {
   try {
-    const request = await fetch(url + "cliente");
+    const request = await fetch(url + "cliente", {
+      headers: {
+        Authorization: "Basic " + btoa(basicAuth),
+        Accept: "application.json",
+        "Content-Type": "application/json",
+      },
+    });
 
     const result = await request.json();
 

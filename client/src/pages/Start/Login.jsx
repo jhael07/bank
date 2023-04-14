@@ -5,24 +5,41 @@ import { Link, Navigate } from "react-router-dom";
 import PagesContext from "../../context/PagesContext";
 import { getAllClientes } from "../../api/clientes";
 import { login } from "../../api/auth";
+import { encrypt, decrypt } from "n-krypta";
 
 const Login = () => {
   //  GETTING ALL THE INFO NEEDED FROM THE CONTEXT
   const { info } = useContext(PagesContext);
-  const { form: handleChangeOnForm, session: session } = info;
+  const { form: handleChangeOnForm, session } = info;
+
+  useEffect(() => {
+    session.setSession(localStorage.getItem("session"));
+  }, [session.setSession]);
 
   // CREDENTIALS STATE
   const [InfoUser, setInfoUser] = useState({ username: "", password: "" });
 
+  // SESSION
   const handleSubmit = async (e) => {
     e.preventDefault(e);
+    // ENCRYPT THE USER INFO
+    const accountInfo = encrypt(
+      JSON.stringify(InfoUser.username),
+      import.meta.env.VITE_SECRET_KEY
+    );
     try {
+      // AUTH THE USER BY THE CREDENTIALS PROVIDED
       const auth = await login(InfoUser);
 
+      // IF AUTH IS SUCCESS
       if (auth) {
+        // SAVE USERNAME AND SESSION IN LOCALSTORAGE
+        localStorage.setItem("session", true);
         session.setSession(true);
+        localStorage.setItem("user", accountInfo);
       }
     } catch (err) {
+      // IF THERE IS AN ERROR, SEND IT TO THE CONSOLE
       console.log(err);
     }
   };
