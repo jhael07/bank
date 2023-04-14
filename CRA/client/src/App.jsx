@@ -13,8 +13,8 @@ export default function App() {
         <Routes>
           <Route element={<Login />} path="/"></Route>
           <Route element={<Register />} path="/register"></Route>
-          <Route element={<HomeCustomer />} path="/Home"></Route>
-          <Route element={<Prestamos />} path="/Prestamos"></Route>
+          <Route element={<HomeCustomer />} path="/home"></Route>
+          <Route element={<Prestamos />} path="prestamos"></Route>
           <Route
             path="*"
             element={
