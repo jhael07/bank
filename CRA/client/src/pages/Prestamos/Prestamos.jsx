@@ -14,7 +14,7 @@ const Prestamos = () => {
   const bankAccounts = cuentabancos.map((bank) => {
     return (
       <>
-        <div className=" bg-white w-10/12 m-auto rounded-bl-lg rounded-br-lg shadow-lg pb-4 grid gap-2">
+        <div className=" bg-white w-11/12 m-auto rounded-bl-lg rounded-br-lg shadow-lg pb-4 grid gap-2">
           <div className="w-full bg-blue-500 flex m-auto p-2 mb-1 justify-center text-2xl text-gray-50">
             Prestamo Hipotecario
           </div>
