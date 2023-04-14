@@ -14,7 +14,8 @@ const Register = () => {
   const [infoCliente, setInfoCliente] = useState(clientes.cliente);
 
   // FUNCTION TO CHECK IF ALL INPUTS ARE FILL OUT
-  const validation = async () => {
+  const validation = async (e) => {
+    e.preventDefault();
     const { cedula, password, nombre, apellido, direccion, telefono } = infoCliente;
 
     if (
@@ -116,7 +117,7 @@ const Register = () => {
               />
             </div>
 
-            <button onClick={validation} className="start__btn">
+            <button onClick={(e) => validation(e)} className="start__btn">
               Submit
             </button>
 

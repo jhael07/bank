@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./css/navbar-desktop.css";
 import Logo from "../../assets/img/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
+import PagesContext from "../../context/PagesContext";
+import { decrypt } from "n-krypta";
 
 const NavbarDesktop = () => {
+  // GETTING THE INFORMATION FROM THE CONTEXT
+  const { info } = useContext(PagesContext);
+  const { account } = info;
+
+  // DECRYPTING THE USER ACCOUNT INFO
+  const { cuentabancos } = JSON.parse(decrypt(account, import.meta.env.VITE_SECRET_KEY));
+  console.log(cuentabancos[0]);
   // FUNCTION TO CLOSE SESSION
   const logout = () => {
     localStorage.removeItem("session");
@@ -12,11 +21,11 @@ const NavbarDesktop = () => {
   };
 
   return (
-    <div className="m-auto bg-white navbar-desktop shadow-md">
+    <div className="m-auto bg-white navbar-desktop shadow-md fixed  z-50">
       <div className=" flex items-center ">
         <a href="/" className="flex  items-center">
           <img src={Logo} className="w-16 mx-3" />
-          <h2 className="font-semibold text-cyan-700 text-2xl">G-Bank</h2>
+          <h2 className="font-semibold text-cyan-700 text-2xl">G-BANK</h2>
         </a>
       </div>
       <div className="navbar-desktop__items">

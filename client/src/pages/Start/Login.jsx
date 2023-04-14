@@ -5,12 +5,12 @@ import { Link, Navigate } from "react-router-dom";
 import PagesContext from "../../context/PagesContext";
 import { getAllClientes } from "../../api/clientes";
 import { login } from "../../api/auth";
-import { encrypt, decrypt } from "n-krypta";
+import { encrypt } from "n-krypta";
 
 const Login = () => {
   //  GETTING ALL THE INFO NEEDED FROM THE CONTEXT
   const { info } = useContext(PagesContext);
-  const { form: handleChangeOnForm, session, account } = info;
+  const { form: handleChangeOnForm, session } = info;
 
   useEffect(() => {
     session.setSession(localStorage.getItem("session"));
@@ -19,30 +19,30 @@ const Login = () => {
   // CREDENTIALS STATE
   const [InfoUser, setInfoUser] = useState({ username: "", password: "" });
 
-  // SESSION
   const handleSubmit = async (e) => {
     e.preventDefault(e);
-    // ENCRYPT THE USER INFO
-    const accountInfo = encrypt(
-      JSON.stringify(InfoUser.username),
-      import.meta.env.VITE_SECRET_KEY
-    );
+
+    // GETTING ALL THE USERS REGISTER
+    const allClientes = await getAllClientes();
+
+    // USER ACCOUNT FOUND
+    const account = allClientes.find((cliente) => cliente.cedula === InfoUser.username);
+
+    // ENCRYPT THE USER ACCOUNT
+    const accountInfo = encrypt(JSON.stringify(account), import.meta.env.VITE_SECRET_KEY);
     try {
       // AUTH THE USER BY THE CREDENTIALS PROVIDED
       const auth = await login(InfoUser);
 
       // IF AUTH IS SUCCESS
       if (auth) {
-        // SAVE USERNAME AND SESSION IN LOCALSTORAGE
-        localStorage.setItem("session", true);
+        localStorage.setItem("session", true); // SAVE USERNAME AND SESSION IN LOCALSTORAGE
         session.setSession(true);
-        localStorage.setItem("user", accountInfo);
 
-        // SAVING THE ACCOUNT INFO IN THE LOCALSTORAGE
+        localStorage.setItem("account", accountInfo); // SAVING THE USER ACCOUNT IN THE LOCALSTORAGE
       }
     } catch (err) {
-      // IF THERE IS AN ERROR, SEND IT TO THE CONSOLE
-      console.log(err);
+      console.log(err); // IF THERE IS AN ERROR, SEND IT TO THE CONSOLE
     }
   };
 

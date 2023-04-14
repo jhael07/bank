@@ -25,15 +25,15 @@ const PagesContextProvider = (props) => {
   // SESSION FOR THE USER
   const [session, setSession] = useState(false);
 
-  // ACCOUNT INFORMATION
-  const [accountInfo, setAccountInfo] = useState({});
+  // USER ACCOUNT
+  const account = localStorage.getItem("account");
 
   const info = {
     clientes: { cliente, SetCliente, allClientes, setAllClientes },
     alert: showAlertMessage,
     form: handleChangeOnForm,
     session: { session, setSession },
-    account: { accountInfo, setAccountInfo },
+    account,
   };
 
   return <PagesContext.Provider value={{ info }}>{props.children}</PagesContext.Provider>;

@@ -50,8 +50,6 @@ export const getAllClientes = async () => {
     const request = await fetch(url + "cliente", {
       headers: {
         Authorization: "Basic " + btoa(basicAuth),
-        Accept: "application.json",
-        "Content-Type": "application/json",
       },
     });
 

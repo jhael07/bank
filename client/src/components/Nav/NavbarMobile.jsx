@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./css/navbar-mobile.css";
 import "./css/media-query.css";
 import Logo from "../../assets/img/logo.png";
 import "../../animation/attention.css";
+import { decrypt } from "n-krypta";
+import PagesContext from "../../context/PagesContext";
 
 const NavbarMobile = () => {
+  // GETTING THE INFORMATION FROM THE CONTEXT
+  const { info } = useContext(PagesContext);
+  const { account } = info;
+
+  // DECRYPTING THE USER ACCOUNT INFO
+  const { nombre, apellido } = JSON.parse(decrypt(account, import.meta.env.VITE_SECRET_KEY));
+
   // FUNCTION TO CLOSE SESSION
   const logout = () => {
     localStorage.removeItem("session");
@@ -26,14 +35,17 @@ const NavbarMobile = () => {
     navMobile.classList.add("closeAnimation");
     navMobile.style.visibility = "hidden";
   };
+
   return (
     <>
       {/* this is how the menu looks when is not been display by the user */}
-      <div className="m-auto bg-white navbar-mobile shadow-md">
+      <div className="m-auto bg-white navbar-mobile shadow-md fixed z-50">
         <div className=" flex justify-between w-full items-center  pr-5">
           <a href="/" className="flex  items-center">
             <img src={Logo} className="w-16 mx-3" />
-            <h2 className="font-semibold text-cyan-700 text-2xl">G-Bank</h2>
+            <h2 className="font-semibold text-cyan-700 text-xl">
+              {nombre} {apellido}
+            </h2>
           </a>
 
           <div className="nav-option__mobile" onClick={animation}>
