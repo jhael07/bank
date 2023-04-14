@@ -77,9 +77,6 @@ const Login = () => {
                 <Link to="/register" className="extra-option">
                   Create a new account
                 </Link>{" "}
-                <Link to="/home/customer" className="extra-option">
-                  Hub
-                </Link>
               </form>
             </div>
           </div>
