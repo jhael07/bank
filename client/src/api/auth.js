@@ -1,5 +1,5 @@
 // API URL
-import url from "./api";
+import url, { basicAuth } from "./api";
 import Swal from "sweetalert2";
 
 // FUNCTION TO DISPLAY ALERTS
@@ -10,6 +10,7 @@ export const login = async (info) => {
     const login = await fetch(url + "cliente/login", {
       method: "POST",
       headers: {
+        Authorization: "Basic " + btoa(basicAuth),
         Accept: "application.json",
         "Content-Type": "application/json",
       },
