@@ -4,17 +4,16 @@ import Register from "./pages/Start/Register";
 import HomeCustomer from "./pages/Home/HomeCustomer";
 import PagesContextProvider from "./context/PagesContextProvider";
 import Prestamos from "./pages/Prestamos/Prestamos";
-import { NavbarDesktop, NavbarMobile } from "./components/Nav";
 
 export default function App() {
   return (
     <PagesContextProvider>
       <BrowserRouter>
         <Routes>
-          <Route element={<Login />} path="/"></Route>
-          <Route element={<Register />} path="/register"></Route>
-          <Route element={<HomeCustomer />} path="/home"></Route>
-          <Route element={<Prestamos />} path="/prestamos"></Route>
+          <Route element={<Login />} path="/" />
+          <Route element={<Register />} path="/register" />
+          <Route element={<HomeCustomer />} path="/home" />
+          <Route element={<Prestamos />} path="/prestamos" />
           <Route
             path="*"
             element={
@@ -22,7 +21,7 @@ export default function App() {
                 <h1 className="text-white text-8xl mt-24">404 PAGE NOT FOUND</h1>
               </div>
             }
-          ></Route>
+          />
         </Routes>
       </BrowserRouter>
     </PagesContextProvider>

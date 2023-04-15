@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { NavbarDesktop, NavbarMobile } from "../../components/Nav/index";
 import PagesContext from "../../context/PagesContext";
 import { Navigate } from "react-router-dom";
-import { decrypt } from "n-krypta";
 import "../../index.css";
 import SecureLocalStorage from "react-secure-storage";
 const HomeCustomer = () => {
