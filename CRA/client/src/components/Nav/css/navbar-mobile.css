@@ -1,7 +1,7 @@
 /* Mobile navbar styles */
 
 .navbar-mobile {
-  width: 100% !important;
+  width: 100vw !important;
   display: flex;
   justify-content: space-between;
   display: flex;
@@ -9,7 +9,7 @@
   @apply border mb-4 !important;
 }
 .list {
-  width: 100%;
+  width: 100vw;
   height: 100% !important;
   z-index: 999;
   background-attachment: fixed;
@@ -34,7 +34,7 @@
 @keyframes nav-option-animation {
   0% {
     left: -800px;
-    width: 80%;
+    width: 80vw;
     visibility: visible;
   }
 
@@ -43,7 +43,7 @@
   }
 
   100% {
-    width: 100%;
+    width: 100vw;
     left: 0;
   }
 }
@@ -58,7 +58,7 @@
   }
 
   100% {
-    width: 100%;
+    width: 100vw;
     left: -1000;
     visibility: hidden;
   }
