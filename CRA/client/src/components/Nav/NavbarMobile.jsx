@@ -43,7 +43,7 @@ const NavbarMobile = () => {
       {/* this is how the menu looks when is not been display by the user */}
       <div className="m-auto bg-white navbar-mobile shadow-md">
         <div className=" flex justify-between w-full items-center  pr-5">
-          <a href="/" className="flex  items-center">
+          <a href="/home" className="flex  items-center">
             <img src={Logo} className="w-16 mx-3" />
             <h2 className="font-semibold text-cyan-700 text-xl">
               {nombre} {apellido}
@@ -66,8 +66,8 @@ const NavbarMobile = () => {
             </p>
         </div>
         <div className="grid gap-0 h-5/6">
-          <a href="/">Inicio</a>
-          <a href="/Prestamos">Prestamos</a>
+          <a href="/home">Inicio</a>
+          <a href="/prestamos">Prestamos</a>
           <a href="#">Cuentas</a>
           <a href="#">Configuración</a>
           <a href="/" onClick={logout}>

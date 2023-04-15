@@ -23,15 +23,15 @@ const NavbarDesktop = () => {
   return (
     <div className="m-auto bg-white navbar-desktop shadow-md   ">
       <div className=" flex items-center ">
-        <a href="/" className="flex  items-center">
+        <a href="/home" className="flex  items-center">
           <img src={Logo} className="w-16 mx-3" />
           <h2 className="font-semibold text-cyan-700 text-2xl">G-BANK</h2>
         </a>
       </div>
       <div className="navbar-desktop__items">
         <ul>
-          <a href="/">Inicio</a>
-          <a href="/Prestamos">Prestamos</a>
+          <a href="/home">Inicio</a>
+          <a href="/prestamos">Prestamos</a>
           <a href="#">Cuentas</a>
           <a href="#">Configuración</a>
           <a href="/" className="logout text-gray-500" onClick={logout}>
