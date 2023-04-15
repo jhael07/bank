@@ -48,42 +48,38 @@ const Login = () => {
 
   return (
     <>
-      {!session.session ? (
-        <div className="login__container">
-          <div className="login ">
-            <div className="m-auto login__content">
-              <h1 className="text-center text-white text-xl mt-1 ">Login</h1>
-              <img src={logo} alt="logo icono" className="logo__img mb-7" />
-              <form className="grid text-center mt-6">
-                <input
-                  type="text"
-                  className="login__input"
-                  placeholder="Username"
-                  onChange={(e) =>
-                    handleChangeOnForm(setInfoUser, InfoUser, "username", e.target.value)
-                  }
-                />
-                <input
-                  type="password"
-                  className="login__input mb-4"
-                  placeholder="Password"
-                  onChange={(e) =>
-                    handleChangeOnForm(setInfoUser, InfoUser, "password", e.target.value)
-                  }
-                />
-                <button onClick={(e) => handleSubmit(e)} className="start__btn">
-                  Submit
-                </button>
-                <Link to="/register" className="extra-option">
-                  Create a new account
-                </Link>{" "}
-              </form>
-            </div>
+      <div className="login__container">
+        <div className="login ">
+          <div className="m-auto login__content">
+            <h1 className="text-center text-white text-xl mt-1 ">Login</h1>
+            <img src={logo} alt="logo icono" className="logo__img mb-7" />
+            <form className="grid text-center mt-6">
+              <input
+                type="text"
+                className="login__input"
+                placeholder="Username"
+                onChange={(e) =>
+                  handleChangeOnForm(setInfoUser, InfoUser, "username", e.target.value)
+                }
+              />
+              <input
+                type="password"
+                className="login__input mb-4"
+                placeholder="Password"
+                onChange={(e) =>
+                  handleChangeOnForm(setInfoUser, InfoUser, "password", e.target.value)
+                }
+              />
+              <button onClick={(e) => handleSubmit(e)} className="start__btn">
+                Submit
+              </button>
+              <Link to="/register" className="extra-option">
+                Create a new account
+              </Link>{" "}
+            </form>
           </div>
         </div>
-      ) : (
-        <Navigate to="/home" />
-      )}
+      </div>
     </>
   );
 };
