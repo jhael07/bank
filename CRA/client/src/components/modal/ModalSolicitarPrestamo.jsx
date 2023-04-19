@@ -75,7 +75,7 @@ const ModalSolicitarPrestamo = ({ active, setActive, titulo }) => {
                 type="text"
                 lang={navigator.language}
                 className="border border-gray-700 rounded-md text-center m-auto"
-                value={+prestamoInfo.monto === 0 ? "1,000" : prestamoInfo.monto}
+                value={+prestamoInfo.monto === 0 ? "" : prestamoInfo.monto}
                 onChange={(e) => handleChange(e.target.value, "monto")}
               />
 
