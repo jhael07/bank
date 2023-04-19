@@ -2,44 +2,83 @@ import React, { useState } from "react";
 import "./modal.css";
 
 const ModalSolicitarPrestamo = ({ active, setActive, titulo }) => {
+  const fecha = new Date();
   const [prestamoInfo, setPrestamosInfo] = useState({
     monto: 0,
+    interes: 0,
+    tiempo: 0,
+    fechaInicio: fecha.getFullYear() + "-" + (fecha.getMonth() + 1) + "-" + fecha.getDate(),
   });
 
-  const interes = prestamoInfo.monto / (Math.random() * 19);
+  const tiempo = [
+    [1, 7],
+    [2, 16.8],
+    [3, 21.4],
+    [4, 22],
+    [5, 23.5],
+  ];
+
+  const handleChange = (value, key) => {
+    if (key === "fechaInicio") {
+      return setPrestamosInfo({
+        ...prestamoInfo,
+        [key]: value,
+      });
+    }
+
+    setPrestamosInfo({
+      ...prestamoInfo,
+      [key]: +value,
+    });
+  };
+
+  console.log(prestamoInfo);
+
   return (
     <div className={`${active ? "visible" : "hidden"} absolute z-50 `}>
       <div className={` modal border border-gray-400 z-50 shadow-xl relative rounded-lg`}>
         <div className="modal-content">
-          <h1 className="text-2xl font-semibold text-green-500 bg-white h-10 p-2 justify-center  flex items-center rounded-md">
+          <h1 className="text-2xl font-semibold text-green-500 bg-gray-50 h-10 p-2 justify-center  flex items-center rounded-md">
             {titulo}
           </h1>
           <br />
-          <div className="bg-white p-3 rounded ">
-            <form className="grid gap-4">
+          <div className=" p-3 rounded ">
+            <div className="grid gap-4">
               <h2 className="m-auto text-xl ">Monto</h2>
-              <input type="number" className="border border-gray-700 rounded-md text-center m-auto" />
+              <input
+                type="number"
+                lang={navigator.language}
+                className="border border-gray-700 rounded-md text-center m-auto"
+                value={+prestamoInfo.monto === 0 ? "" : prestamoInfo.monto}
+                onChange={(e) => handleChange(e.target.value, "monto")}
+              />
 
               <h2 className="m-auto text-xl ">Interes</h2>
-              <h3 className="m-auto text-xl text-yellow-400">{interes}</h3>
+              <h3 className="m-auto text-xl text-yellow-400">{prestamoInfo.interes}%</h3>
 
-              <div className="flex gap-6">
-                <div className="grid justify-center gap-3">
-                  <h2 className="m-auto text-xl ">Fecha de inicio:</h2>
-                  <input
-                    type="date"
-                    className="border border-gray-700 rounded-md text-center"
-                  />
-                </div>
-                <div className="grid justify-center gap-3">
-                  <h2 className="m-auto text-xl ">Fecha de Finalización:</h2>
-                  <input
-                    type="date"
-                    className="border border-gray-700 rounded-md text-center"
-                  />
+              <div className="flex justify-center">
+                <div className="grid justify-center gap-6">
+                  <h2 className="m-auto text-xl ">Plazo:</h2>
+                  <select
+                    value={prestamoInfo.tiempo[0]}
+                    className="border border-gray-700 rounded-md text-center p-3"
+                    onChange={(e) => {
+                      const [year, interes] = e.target.value.split(",");
+                      setPrestamosInfo({ ...prestamoInfo, tiempo: +year, interes: +interes });
+                    }}
+                  >
+                    <option>Elige el tiempo </option>
+                    {tiempo.map((plazo) => (
+                      <option value={plazo}>
+                        {plazo[0]} años - {plazo[1]}%
+                      </option>
+                    ))}
+                  </select>
+
+                  <button className="btn-agregar text-lg  justify-center">Solicitar</button>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
         </div>
         <button

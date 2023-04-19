@@ -26,8 +26,7 @@ const Prestamos = () => {
     const prestamos = async () => {
       try {
         const { idCliente } = clientInfo;
-        const { prestamos } = await getPrestamoInfo(idCliente);
-        console.log(prestamos);
+        const prestamos = await getPrestamoInfo(idCliente);
         setPrestamosInfo(prestamos);
       } catch (err) {
         console.log(err);
@@ -36,11 +35,12 @@ const Prestamos = () => {
     prestamos();
   }, []);
 
+  console.log(prestamosInfo);
+
   // MODAL STATES
   const [enableModal, setEnableModal] = useState(false);
 
   const prestamosAccount = prestamosInfo?.map((bank) => {
-    console.log(bank);
     return (
       <CardPrestamo
         titulo={`Prestamo`}
@@ -81,11 +81,6 @@ const Prestamos = () => {
                   >
                     <span className="btn-info">solicitar prestamo</span>
                     <FontAwesomeIcon icon={faPlusCircle} className="text-xl text-white" />
-                  </button>
-
-                  <button className="btn-pagar  shadow-sm">
-                    <span className="btn-info ">Pagar</span>
-                    <FontAwesomeIcon icon={faMoneyBill} className="text-xl text-white" />
                   </button>
                 </div>
               </div>
