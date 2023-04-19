@@ -27,6 +27,7 @@ const Prestamos = () => {
       try {
         const { idCliente } = clientInfo;
         const prestamos = await getPrestamoInfo(idCliente);
+        console.log(prestamos);
         setPrestamosInfo(prestamos);
       } catch (err) {
         console.log(err);

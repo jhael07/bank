@@ -10,10 +10,13 @@ const HomeCustomer = () => {
   const { session, account } = info;
 
   // DECRYPTING THE USER ACCOUNT INFO
-  const { nombre, apellido, cuentabancos } = JSON.parse(SecureLocalStorage.getItem("account"));
-  const nameDisplay = `${nombre[0].toUpperCase()}${nombre.slice(1, nombre.length)}`;
+  const cuenta = JSON.parse(SecureLocalStorage.getItem("account"));
+  const nameDisplay = `${cuenta?.nombre[0]?.toUpperCase()}${cuenta?.nombre?.slice(
+    1,
+    cuenta?.nombre?.length
+  )}`;
 
-  const bankAccounts = cuentabancos.map((bank) => {
+  const bankAccounts = cuenta?.cuentabancos?.map((bank) => {
     return (
       <>
         <div
@@ -55,7 +58,7 @@ const HomeCustomer = () => {
             </div>
             <div
               className={`bg-slate-100  justify-center grid grid-cols-1 p-3 gap-8 ${
-                cuentabancos.length > 1 && "lg:grid-cols-2"
+                cuenta?.cuentabancos?.length > 1 && "lg:grid-cols-2"
               } `}
             >
               {bankAccounts}

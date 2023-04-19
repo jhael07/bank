@@ -28,12 +28,16 @@ const PagesContextProvider = (props) => {
   // USER ACCOUNT
   const account = localStorage.getItem("account");
 
+  // STATE TO STORE THE PRESTAMOS INFO FOR EVERY USER
+  const [prestamosInfo, setPrestamosInfo] = useState([]);
+
   const info = {
     clientes: { cliente, SetCliente, allClientes, setAllClientes },
     alert: showAlertMessage,
     form: handleChangeOnForm,
     session: { session, setSession },
     account,
+    prestamos: { prestamosInfo, setPrestamosInfo },
   };
 
   return <PagesContext.Provider value={{ info }}>{props.children}</PagesContext.Provider>;

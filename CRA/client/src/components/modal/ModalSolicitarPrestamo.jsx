@@ -1,7 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./modal.css";
+import PagesContext from "../../context/PagesContext";
+import { addPrestamo, getPrestamoInfo } from "../../api/prestamos";
+import Prestamos from "../../pages/Prestamos/Prestamos";
+import secureLocalStorage from "react-secure-storage";
 
 const ModalSolicitarPrestamo = ({ active, setActive, titulo }) => {
+  const { info } = useContext(PagesContext);
+  const { alert } = info;
+
   const fecha = new Date();
   const [prestamoInfo, setPrestamosInfo] = useState({
     monto: 0,
@@ -32,6 +39,19 @@ const ModalSolicitarPrestamo = ({ active, setActive, titulo }) => {
     });
   };
 
+  const agregar = () => {
+    // make sure all inputs all fill out
+    if (prestamoInfo.monto < 1) return alert("Error", "Por favor llenar el monto", "error");
+    if (prestamoInfo.tiempo === 0) return alert("Error", "Por favor elegir el plazo", "error");
+    if (isNaN(prestamoInfo.tiempo))
+      return alert("Error", "Por favor elegir un plazo valido", "error");
+
+    // GET THE CLIENT ID
+    const clientInfo = JSON.parse(secureLocalStorage.getItem("account"));
+    const { idCliente } = clientInfo;
+
+    addPrestamo(idCliente, prestamoInfo.monto, prestamoInfo.interes, prestamoInfo.tiempo);
+  };
   console.log(prestamoInfo);
 
   return (
@@ -75,7 +95,9 @@ const ModalSolicitarPrestamo = ({ active, setActive, titulo }) => {
                     ))}
                   </select>
 
-                  <button className="btn-agregar text-lg  justify-center">Solicitar</button>
+                  <button className="btn-agregar text-lg  justify-center" onClick={agregar}>
+                    Solicitar
+                  </button>
                 </div>
               </div>
             </div>
