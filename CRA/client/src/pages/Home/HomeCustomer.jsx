@@ -37,6 +37,8 @@ const HomeCustomer = () => {
     );
   });
 
+  console.log(session.session);
+
   return (
     <>
       {session.session ? (
