@@ -19,14 +19,20 @@ const ModalSolicitarPrestamo = ({ active, setActive, titulo }) => {
 
   const tiempo = [
     [1, 7],
-    [2, 16.8],
-    [3, 21.4],
+    [2, 16],
+    [3, 21],
     [4, 22],
-    [5, 23.5],
+    [5, 23],
   ];
 
   const handleChange = (value, key) => {
     if (key === "fechaInicio") {
+      return setPrestamosInfo({
+        ...prestamoInfo,
+        [key]: value,
+      });
+    }
+    if (key === "monto") {
       return setPrestamosInfo({
         ...prestamoInfo,
         [key]: value,

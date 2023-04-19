@@ -47,8 +47,8 @@ const Prestamos = () => {
         titulo={`Prestamo`}
         id={bank.idPrestamo}
         capitalInicial={`${bank.monto}`}
-        inicio={bank.fechaEnd}
-        final={bank.fechaBeg}
+        inicio={bank.fechaBeg}
+        final={bank.fechaEnd}
         interes={bank.insteres}
       />
     );

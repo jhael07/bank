@@ -30,11 +30,11 @@ export const addPrestamo = async (id, monto, interes, tiempo) => {
     const date = new Date();
     const data = {
       monto: Number(monto),
-      insteres: Number(interes),
+      insteres: parseFloat(interes),
+      fechaBeg: `${date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()}`,
       fechaEnd: `${
         date.getFullYear() + tiempo + "-" + (date.getMonth() + 1) + "-" + date.getDate()
       }`,
-      fechaBeg: `${date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()}`,
     };
 
     const request = await axios.post(url + `prestamo/new/${id}`, data, {
@@ -42,7 +42,7 @@ export const addPrestamo = async (id, monto, interes, tiempo) => {
     });
 
     showAlertMessage("Exito", "Prestamo agregado existosamente", "success");
-    if (request.status === 200) window.location.reload();
+    if (request.status === 200) setTimeout(() => window.location.reload(), 3000);
   } catch (err) {
     showAlertMessage("Error", err.message, "error");
     return false;
