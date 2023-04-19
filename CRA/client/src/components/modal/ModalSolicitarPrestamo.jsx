@@ -72,7 +72,7 @@ const ModalSolicitarPrestamo = ({ active, setActive, titulo }) => {
             <div className="grid gap-4">
               <h2 className="m-auto text-xl ">Monto</h2>
               <input
-                type="text"
+                type="number"
                 lang={navigator.language}
                 className="border border-gray-700 rounded-md text-center m-auto"
                 value={+prestamoInfo.monto === 0 ? "" : prestamoInfo.monto}
