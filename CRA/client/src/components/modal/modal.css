@@ -1,0 +1,11 @@
+.modal {
+  @apply fixed w-fit p-4 backdrop-blur-2xl;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal-content {
+  @apply p-4 grid justify-center pt-12;
+  width: 75vw;
+}

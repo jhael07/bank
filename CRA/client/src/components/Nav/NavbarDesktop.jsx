@@ -11,9 +11,6 @@ const NavbarDesktop = () => {
   const { info } = useContext(PagesContext);
   const { account } = info;
 
-  // DECRYPTING THE USER ACCOUNT INFO
-  const { cuentabancos } = JSON.parse(SecureLocalStorage.getItem("account"));
-
   // FUNCTION TO CLOSE SESSION
   const logout = () => {
     localStorage.removeItem("session");

@@ -1,0 +1,23 @@
+.begin-end {
+  @apply m-auto text-gray-600  mt-3 flex justify-between w-full;
+}
+
+.titulo-card {
+  @apply w-full bg-blue-500 flex m-auto p-2 mb-1  text-2xl text-gray-50;
+}
+
+@media (min-width: 200px) and (max-width: 600px) {
+  .begin-end {
+    @apply text-sm w-60;
+  }
+
+  .titulo-card {
+    @apply text-lg;
+  }
+}
+
+@media (min-width: 600px) {
+  .begin-end {
+    @apply text-lg w-72;
+  }
+}

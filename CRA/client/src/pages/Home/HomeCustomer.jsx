@@ -16,7 +16,9 @@ const HomeCustomer = () => {
   const bankAccounts = cuentabancos.map((bank) => {
     return (
       <>
-        <div className=" bg-white w-11/12 m-auto rounded-bl-lg rounded-br-lg shadow-lg pb-4 grid gap-2">
+        <div
+          className={`hover:scale-105 transition-all bg-white w-11/12 m-auto rounded-bl-lg rounded-br-lg shadow-lg pb-4 grid gap-2`}
+        >
           <div className="w-full bg-blue-500 flex m-auto p-2 mb-1 justify-center text-2xl text-gray-50">
             Cuenta de {bank.tipo}
           </div>
@@ -49,7 +51,11 @@ const HomeCustomer = () => {
             >
               Bienvenido {nameDisplay}
             </div>
-            <div className="bg-slate-100  justify-center grid grid-cols-1 p-3">
+            <div
+              className={`bg-slate-100  justify-center grid grid-cols-1 p-3 gap-8 ${
+                cuentabancos.length > 1 && "lg:grid-cols-2"
+              } `}
+            >
               {bankAccounts}
             </div>
           </div>
