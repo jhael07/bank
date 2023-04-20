@@ -6,7 +6,7 @@ const Loading = ({ text }) => {
     <div className="loader-bg">
       <span class="loader"></span>
       <br />
-      <p>{text}</p>
+      <p className="text-loader">{text}</p>
     </div>
   );
 };

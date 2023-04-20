@@ -14,7 +14,10 @@ const CardPrestamo = ({ titulo, id, capitalInicial, inicio, final, interes }) =>
   const cuota = (capitalInicial * i) / (1 - (1 + i) ** -n);
 
   return (
-    <div className="hover:scale-105 hover:cursor-pointer  transition-all active:bg-slate-200  bg-white w-11/12 m-auto rounded-bl-lg rounded-br-lg shadow-lg pb-4 grid gap-2">
+    <div
+      className="hover:scale-105 hover:cursor-pointer  transition-all active:bg-slate-200  bg-white w-11/12 m-auto rounded-bl-lg rounded-br-lg shadow-lg pb-4 grid gap-2"
+      onClick={() => alert("click")}
+    >
       <div className="titulo-card">
         <div className="w-3/4 justify-between m-auto flex">
           {titulo} <span> Plazo: {n} meses</span>

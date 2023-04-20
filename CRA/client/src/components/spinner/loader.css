@@ -20,6 +20,11 @@
   @apply backdrop-blur-0;
 }
 
+@media (max-width: 600px) {
+  .text-loader {
+    @apply text-sm;
+  }
+}
 @keyframes rotation {
   0% {
     transform: rotate(0deg);

@@ -4,6 +4,7 @@ import Register from "./pages/Start/Register";
 import HomeCustomer from "./pages/Home/HomeCustomer";
 import PagesContextProvider from "./context/PagesContextProvider";
 import Prestamos from "./pages/Prestamos/Prestamos";
+import Inversiones from "./pages/Inversiones/Inversiones";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
           <Route element={<Register />} path="/register" />
           <Route element={<HomeCustomer />} path="/home" />
           <Route element={<Prestamos />} path="/prestamos" />
+          <Route element={<Inversiones />} path="/inversiones" />
           <Route
             path="*"
             element={

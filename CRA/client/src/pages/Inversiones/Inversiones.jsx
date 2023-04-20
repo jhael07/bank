@@ -6,14 +6,14 @@ import CardPrestamo from "../../components/cards/CardPrestamo";
 import { getPrestamoInfo } from "../../api/prestamos";
 import { Navigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMoneyBill, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import ModalSolicitarPrestamo from "../../components/modal/ModalSolicitarPrestamo";
 import Loading from "../../components/spinner/Loading";
 
-const Prestamos = () => {
+const Inversiones = () => {
   // THE OBJ THAT HAS ALL THE INFO ABOUT THE CONTEXT IS INFO
   const { info } = useContext(PagesContext);
-  const { setSession, alert: showMessage } = info;
+  const { setSession } = info;
 
   // Loading
   const [loading, setLoading] = useState(false);
@@ -27,15 +27,6 @@ const Prestamos = () => {
 
   // USEEFFECT FOR GETTING ALL THE PRESTAMOS INFO
   useEffect(() => {
-    if (!localStorage.getItem("infoPrestamos")) {
-      showMessage(
-        "Información",
-        "Si haces click en los prestamos podras ver más detalles",
-        "question"
-      );
-
-      localStorage.setItem("infoPrestamos", true);
-    }
     const prestamos = async () => {
       try {
         setLoading(true);
@@ -49,6 +40,8 @@ const Prestamos = () => {
     };
     prestamos();
   }, []);
+
+  console.log(prestamosInfo);
 
   // MODAL STATES
   const [enableModal, setEnableModal] = useState(false);
@@ -87,13 +80,13 @@ const Prestamos = () => {
               }
             >
               <div className="flex gap-3 items-center justify-between w-full px-7 m-auto">
-                Prestamos{" "}
+                Inversiones
                 <div className="flex gap-7">
                   <button
                     className="btn-agregar shadow-sm"
                     onClick={() => setEnableModal(true)}
                   >
-                    <span className="btn-info">solicitar prestamo</span>
+                    <span className="btn-info">Hacer Inversión</span>
                     <FontAwesomeIcon icon={faPlusCircle} className="text-xl text-white" />
                   </button>
                 </div>
@@ -119,4 +112,4 @@ const Prestamos = () => {
   );
 };
 
-export default Prestamos;
+export default Inversiones;

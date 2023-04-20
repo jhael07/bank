@@ -54,3 +54,7 @@ body {
 input:focus {
   outline: none;
 }
+
+.login__message {
+  @apply absolute  rounded-lg border border-gray-300 shadow-lg   bg-white p-10;
+}

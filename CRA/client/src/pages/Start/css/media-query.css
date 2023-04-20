@@ -32,3 +32,10 @@
     @apply w-44 p-2 !important;
   }
 }
+
+/* * queries for the spinner modal */
+@media (max-width: 600px) {
+  .login__message {
+    width: 100% !important;
+  }
+}

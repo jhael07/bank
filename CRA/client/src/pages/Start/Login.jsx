@@ -61,7 +61,7 @@ const Login = () => {
             <div className="m-auto login__content">
               {loading ? (
                 <div
-                  className="absolute  rounded-lg border border-gray-300 shadow-lg  bg-white p-10 "
+                  className="login__message"
                   style={{ transform: "translate(-50%,-50%)", top: "50%", left: "50%" }}
                 >
                   <Loading text={"Iniciando sesión, espere un momento."} />

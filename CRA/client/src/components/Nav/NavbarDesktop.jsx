@@ -15,6 +15,7 @@ const NavbarDesktop = () => {
   const logout = () => {
     localStorage.removeItem("session");
     localStorage.removeItem("user");
+    localStorage.removeItem("infoPrestamos");
   };
 
   return (
@@ -29,8 +30,8 @@ const NavbarDesktop = () => {
         <ul>
           <a href="/home">Inicio</a>
           <a href="/prestamos">Prestamos</a>
-          <a href="#">Cuentas</a>
-          <a href="#">Configuración</a>
+          <a href="/inversiones">Inversiones</a>
+          <a href="#">Historial</a>
           <a href="/" className="logout text-gray-500" onClick={logout}>
             <FontAwesomeIcon icon={faPowerOff} size="xl" />
           </a>

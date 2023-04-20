@@ -19,6 +19,7 @@ const NavbarMobile = () => {
   const logout = () => {
     localStorage.removeItem("session");
     localStorage.removeItem("user");
+    localStorage.removeItem("infoPrestamos");
   };
 
   const animation = () => {
@@ -68,8 +69,8 @@ const NavbarMobile = () => {
         <div className="grid gap-0 h-5/6">
           <a href="/home">Inicio</a>
           <a href="/prestamos">Prestamos</a>
-          <a href="#">Cuentas</a>
-          <a href="#">Configuración</a>
+          <a href="/inversiones">Inversiones</a>
+          <a href="#">Historial</a>
           <a href="/" onClick={logout}>
             <span className="hover:text-red-500">Cerrar Sessión</span>
           </a>

@@ -9,3 +9,28 @@
   @apply p-4 grid justify-center pt-12;
   width: 75vw;
 }
+
+.contenido {
+  @apply grid grid-cols-1 justify-center gap-8;
+}
+
+.btn-agregar-form {
+  @apply w-2/4;
+}
+
+.modal__message {
+  @apply absolute  rounded-lg border border-gray-300 shadow-lg  bg-white p-10;
+}
+
+@media (min-width: 600px) {
+  .contenido {
+    @apply grid grid-cols-2 justify-center gap-8;
+  }
+}
+
+@media (max-width: 600px) {
+  .modal__message {
+    width: 100% !important;
+    @apply text-sm;
+  }
+}
