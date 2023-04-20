@@ -8,11 +8,15 @@ import { Navigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoneyBill, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import ModalSolicitarPrestamo from "../../components/modal/ModalSolicitarPrestamo";
+import Loading from "../../components/spinner/Loading";
 
 const Prestamos = () => {
   // THE OBJ THAT HAS ALL THE INFO ABOUT THE CONTEXT IS INFO
   const { info } = useContext(PagesContext);
   const { setSession } = info;
+
+  // Loading
+  const [loading, setLoading] = useState(false);
 
   // CLIENT ID
   const clientInfo = JSON.parse(SecureLocalStorage.getItem("account"));
@@ -25,10 +29,11 @@ const Prestamos = () => {
   useEffect(() => {
     const prestamos = async () => {
       try {
+        setLoading(true);
         const { idCliente } = clientInfo;
         const prestamos = await getPrestamoInfo(idCliente);
-        console.log(prestamos);
         setPrestamosInfo(prestamos);
+        setLoading(false);
       } catch (err) {
         console.log(err);
       }
@@ -91,7 +96,11 @@ const Prestamos = () => {
                 prestamosInfo?.length > 1 && "lg:grid-cols-2"
               } `}
             >
-              {prestamosAccount}
+              {loading ? (
+                <Loading text={"Los prestamos se estan cargando."} />
+              ) : (
+                prestamosAccount
+              )}
             </div>
           </div>
         </div>

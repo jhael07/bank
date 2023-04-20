@@ -6,11 +6,15 @@ import PagesContext from "../../context/PagesContext";
 import { getAllClientes } from "../../api/clientes";
 import { login } from "../../api/auth";
 import SecureLocalStorage from "react-secure-storage";
+import Loading from "../../components/spinner/Loading";
 
 const Login = () => {
   //  GETTING ALL THE INFO NEEDED FROM THE CONTEXT
   const { info } = useContext(PagesContext);
   const { form: handleChangeOnForm, session } = info;
+
+  //Loading
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     session.setSession(localStorage.getItem("session"));
@@ -31,6 +35,7 @@ const Login = () => {
     // ENCRYPT THE USER ACCOUNT
     const accountInfo = JSON.stringify(account);
     try {
+      setLoading(true);
       // AUTH THE USER BY THE CREDENTIALS PROVIDED
       const auth = await login(InfoUser);
 
@@ -41,6 +46,8 @@ const Login = () => {
 
         SecureLocalStorage.setItem("account", accountInfo); // SAVING THE USER ACCOUNT IN THE LOCALSTORAGE
       }
+
+      setLoading(false);
     } catch (err) {
       console.log(err); // IF THERE IS AN ERROR, SEND IT TO THE CONSOLE
     }
@@ -52,6 +59,14 @@ const Login = () => {
         <div className="login__container">
           <div className="login ">
             <div className="m-auto login__content">
+              {loading ? (
+                <div
+                  className="absolute  rounded-lg border border-gray-300 shadow-lg  bg-white p-10 "
+                  style={{ transform: "translate(-50%,-50%)", top: "50%", left: "50%" }}
+                >
+                  <Loading text={"Iniciando sesión, espere un momento."} />
+                </div>
+              ) : null}
               <h1 className="text-center text-white text-xl mt-1 ">Login</h1>
               <img src={logo} alt="logo icono" className="logo__img mb-7" />
               <form className="grid text-center mt-6">

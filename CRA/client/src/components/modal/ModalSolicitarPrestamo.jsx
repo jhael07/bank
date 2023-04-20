@@ -4,10 +4,14 @@ import PagesContext from "../../context/PagesContext";
 import { addPrestamo, getPrestamoInfo } from "../../api/prestamos";
 import Prestamos from "../../pages/Prestamos/Prestamos";
 import secureLocalStorage from "react-secure-storage";
+import Loading from "../spinner/Loading";
 
 const ModalSolicitarPrestamo = ({ active, setActive, titulo }) => {
   const { info } = useContext(PagesContext);
   const { alert } = info;
+
+  // LOADING
+  const [loading, setLoading] = useState(false);
 
   const fecha = new Date();
   const [prestamoInfo, setPrestamosInfo] = useState({
@@ -58,11 +62,10 @@ const ModalSolicitarPrestamo = ({ active, setActive, titulo }) => {
 
     addPrestamo(idCliente, prestamoInfo.monto, prestamoInfo.interes, prestamoInfo.tiempo);
   };
-  console.log(prestamoInfo);
 
   return (
     <div className={`${active ? "visible" : "hidden"} absolute z-50 `}>
-      <div className={` modal border border-gray-400 z-50 shadow-xl relative rounded-lg`}>
+      <div className={` modal border border-gray-400 z-50 shadow-xl relative rounded-lg `}>
         <div className="modal-content">
           <h1 className="text-2xl font-semibold text-green-500 bg-gray-50 h-10 p-2 justify-center  flex items-center rounded-md">
             {titulo}
