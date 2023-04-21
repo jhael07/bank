@@ -13,7 +13,6 @@ import CardInversion from "../../components/cards/CardInversion";
 const Inversiones = () => {
   // THE OBJ THAT HAS ALL THE INFO ABOUT THE CONTEXT IS INFO
   const { info } = useContext(PagesContext);
-  const { setSession } = info;
 
   // Loading
   const [loading, setLoading] = useState(false);
@@ -95,11 +94,11 @@ const Inversiones = () => {
               } `}
             >
               {loading ? (
-                <Loading text={"Los prestamos se estan cargando."} />
+                <Loading text={"Las inversiones se estan cargando."} />
               ) : inversionesInfo.length < 1 ? (
                 <div className="grid m-auto font-semibold text-2xl gap-4 mt-4">
                   <FontAwesomeIcon icon={faX} className="m-auto text-6xl text-red-400" />
-                  <h1 className="text-gray-800">No hay prestamos todavia.</h1>
+                  <h1 className="text-gray-800">No hay inversiones todavia.</h1>
                 </div>
               ) : (
                 inversionesAccount

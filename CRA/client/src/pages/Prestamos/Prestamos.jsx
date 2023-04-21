@@ -6,9 +6,15 @@ import CardPrestamo from "../../components/cards/CardPrestamo";
 import { getPrestamoInfo } from "../../api/prestamos";
 import { Navigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlusCircle, faX } from "@fortawesome/free-solid-svg-icons";
+import {
+  faExclamationCircle,
+  faMoneyBill,
+  faPlusCircle,
+  faX,
+} from "@fortawesome/free-solid-svg-icons";
 import ModalSolicitarPrestamo from "../../components/modal/ModalSolicitarPrestamo";
 import Loading from "../../components/spinner/Loading";
+import ModalPagos from "../../components/modal/ModalPagos";
 
 const Prestamos = () => {
   // THE OBJ THAT HAS ALL THE INFO ABOUT THE CONTEXT IS INFO
@@ -52,6 +58,8 @@ const Prestamos = () => {
 
   // MODAL STATES
   const [enableModal, setEnableModal] = useState(false);
+  const [enableModalPagos, setEnableModalPagos] = useState(false);
+  const [view, setView] = useState(true);
 
   const prestamosAccount = prestamosInfo?.map((bank) => {
     return (
@@ -74,12 +82,32 @@ const Prestamos = () => {
         active={enableModal}
         setActive={setEnableModal}
         titulo={"Solicitar prestamo"}
+      />{" "}
+      <ModalPagos
+        active={enableModalPagos}
+        setActive={setEnableModalPagos}
+        titulo={"Procesar Pago"}
       />
-
       {session ? (
         <div className="bg-white" style={{ height: "100vh", width: "100vw" }}>
           <NavbarDesktop />
           <NavbarMobile />
+          <div
+            className={`${
+              view ? "visible" : "hidden"
+            } top-0 w-11/12 m-auto bg-yellow-400 p-3 sm:text-sm md:text-lg lg:text-base text-sm rounded-xl gap-5 relative flex justify-center items-center`}
+          >
+            {" "}
+            <FontAwesomeIcon icon={faExclamationCircle} /> Al hacer click en las tarjetas de
+            prestamos se puede ver la tabla de amortización.
+            <button
+              className="text-red-600 absolute right-4  text-3xl  h-12  w-8 flex items-center justify-center p-3 rounded-full"
+              style={{ borderRadius: "100%" }}
+              onClick={() => setView(false)}
+            >
+              &times;
+            </button>
+          </div>
           <div className="bg-white p-4 m-auto">
             <div
               className={
@@ -95,6 +123,13 @@ const Prestamos = () => {
                   >
                     <span className="btn-info">solicitar prestamo</span>
                     <FontAwesomeIcon icon={faPlusCircle} className="text-xl text-white" />
+                  </button>
+                  <button
+                    className="btn-pagar shadow-sm"
+                    onClick={() => setEnableModalPagos(true)}
+                  >
+                    <span className="btn-info">Pagar</span>
+                    <FontAwesomeIcon icon={faMoneyBill} className="text-xl text-white" />
                   </button>
                 </div>
               </div>

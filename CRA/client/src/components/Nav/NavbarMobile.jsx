@@ -22,8 +22,8 @@ const NavbarMobile = () => {
     localStorage.removeItem("infoPrestamos");
   };
 
+  // * this is the animation to show the navbar
   const animation = () => {
-    // * this is the animation to show the navbar
     const navMobile = document.querySelector(".list");
     navMobile.classList.remove("closeAnimation");
     navMobile.classList.add("navAnimation");

@@ -23,12 +23,12 @@ const ModalDetallesPrestamo = ({ active, setActive, id, cuota }) => {
     <div
       className={`${
         active ? "visible" : "hidden"
-      } modalDetalles h-80 w-5/6 flex justify-center shadow-xl
+      } modalDetalles h-80 w-11/12 flex justify-center shadow-xl
     rounded-lg fixed`}
       id="tableID"
     >
       <button
-        className="bg-red-600 hover:bg-red-700 absolute right-1 text-2xl top-2 h-12 text-white w-12 flex items-center justify-center p-3 rounded-full"
+        className="bg-red-600 hover:bg-red-700 fixed right-1 text-2xl top-2 h-12 text-white w-12 flex items-center justify-center p-3 rounded-full"
         style={{ borderRadius: "100%" }}
         onClick={() => setActive(false)}
       >
@@ -38,10 +38,12 @@ const ModalDetallesPrestamo = ({ active, setActive, id, cuota }) => {
         <div className="grid justify-center  w-fit relative">
           <h1 className="py-5 m-auto text-2xl text-white">Detalles de los pagos</h1>
 
-          <table className="">
+          <table>
             <tr className="bg-white border">
-              <th className="border border-gray-200 p-2">Tasa de Interes</th>
-              <th className="border border-gray-200 p-2">Monto</th>
+              <th className="border border-gray-200 p-2">ID de pago</th>
+              <th className="border border-gray-200 p-2">Monto a Pagar</th>
+              <th className="border border-gray-200 p-2">fecha de Pago</th>
+              <th className="border border-gray-200 p-2">Pago Realizado</th>
             </tr>
 
             <tbody>
@@ -49,11 +51,21 @@ const ModalDetallesPrestamo = ({ active, setActive, id, cuota }) => {
                 return (
                   <>
                     <tr>
+                      <td className="text-center w-28 bg-gray-200 border border-gray-200">
+                        {prestamo.idCuota}
+                      </td>{" "}
                       <td className="text-center w-72 bg-gray-200 border border-gray-200">
-                        {cuota.toFixed(2)}
+                        ${Number(cuota.toFixed(2)).toLocaleString("es-DO")}
                       </td>
                       <td className="text-center p-2 w-72 bg-gray-200 border border-gray-200">
                         {prestamo.fechaPlanificado.slice(0, 10)}
+                      </td>
+                      <td
+                        className={`text-center p-2 w-72 bg-gray-200 border border-gray-200 ${
+                          prestamo.tipo === "" ? "bg-yellow-50" : "bg-green-500 text-white"
+                        }`}
+                      >
+                        {prestamo.tipo === "" ? "PENDIENTE" : prestamo.tipo}
                       </td>
                     </tr>
                   </>

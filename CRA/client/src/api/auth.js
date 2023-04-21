@@ -7,6 +7,9 @@ const showAlertMessage = (title, info, type) => Swal.fire(title, info, type);
 
 export const login = async (info) => {
   try {
+    if (info.username.length < 1 || info.password.length < 1)
+      throw new Error("Los campos están vacios, porfavor llenarlos.");
+
     const login = await fetch(url + "cliente/login", {
       method: "POST",
       headers: {

@@ -141,7 +141,7 @@ const ModalSolicitarPrestamo = ({ active, setActive, titulo }) => {
                 <input
                   type="text"
                   className="border border-gray-700 rounded-md text-center m-auto"
-                  placeholder="Escribe el nombre del garante/tia"
+                  placeholder="Escribe el nombre del fiador"
                   onChange={(e) => setGarante({ ...garante, nombre: e.target.value })}
                 />{" "}
                 <input
@@ -151,7 +151,7 @@ const ModalSolicitarPrestamo = ({ active, setActive, titulo }) => {
                   onChange={(e) => setGarante({ ...garante, tipo: e.target.value })}
                 />
                 <input
-                  type="text"
+                  type="number"
                   className="border border-gray-700 rounded-md text-center m-auto"
                   placeholder="Escribe el valor de la garantia"
                   onChange={(e) => setGarante({ ...garante, valor: +e.target.value })}

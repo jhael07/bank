@@ -17,6 +17,7 @@ const HomeCustomer = () => {
   )}`;
 
   const bankAccounts = cuenta?.cuentabancos?.map((bank) => {
+    console.log(bank);
     return (
       <>
         <div
@@ -30,7 +31,7 @@ const HomeCustomer = () => {
             <div className="grid justify-center">
               Balance disponible
               <div className="m-auto text-green-500">
-                <b>{Number(bank.numero * 20).toLocaleString("es-DO")}</b>{" "}
+                <b>{Number(bank.numero).toLocaleString("es-DO")}</b>{" "}
                 <span className="font-light text-normal">DOP</span>
               </div>
             </div>
