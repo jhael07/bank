@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import "./modal.css";
 import PagesContext from "../../context/PagesContext";
-import { addPrestamo } from "../../api/prestamos";
 import secureLocalStorage from "react-secure-storage";
 import Loading from "../spinner/Loading";
+import { addInversion } from "../../api/inversiones";
 
 const ModalSolicitarPrestamo = ({ active, setActive, titulo }) => {
   const { info } = useContext(PagesContext);
@@ -11,9 +11,6 @@ const ModalSolicitarPrestamo = ({ active, setActive, titulo }) => {
 
   // OBJECT WITH THE FORM INFORMATION
   const [loading, setLoading] = useState(false);
-
-  // GUARANTOR INFORMATION
-  const [garante, setGarante] = useState({ valor: 0, tipo: "", ubicacion: "", nombre: "" });
 
   // DATE FOR THE PRESTAMO
   const fecha = new Date();
@@ -69,12 +66,11 @@ const ModalSolicitarPrestamo = ({ active, setActive, titulo }) => {
     // ADDING SPINNER WILL WAITING FOR THE ASYNC CALL
     setLoading(true);
     // ADD THE PRESTAMO TO THE ACCOUNT
-    await addPrestamo(
+    await addInversion(
       idCliente,
       prestamoInfo.monto,
       prestamoInfo.interes,
       prestamoInfo.tiempo,
-      garante
     );
 
     // HIDING THE MODAL AND ALSO THE SPINNER

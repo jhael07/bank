@@ -31,12 +31,7 @@ export const addInversion = async (id, monto, interes, tiempo) => {
     const data = {
       monto: Number(monto),
       insteres: parseFloat(interes),
-      garantia: {
-        nombre: garante.nombre,
-        valor: garante.valor,
-        tipo: garante.tipo,
-        ubicacion: garante.ubicacion,
-      },
+
       fechaBeg: `${date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()}`,
       fechaEnd: `${
         date.getFullYear() + tiempo + "-" + (date.getMonth() + 1) + "-" + date.getDate()
