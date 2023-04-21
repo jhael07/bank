@@ -8,13 +8,15 @@ import axios from "axios";
 import url, { basicAuth } from "../../api/api";
 import Loading from "../../components/spinner/Loading";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faX } from "@fortawesome/free-solid-svg-icons";
+import { faPlusCircle, faX } from "@fortawesome/free-solid-svg-icons";
+import ModalDeposito from "../../components/modal/ModalDeposito";
 
 const HomeCustomer = () => {
   // THE OBJ THAT HAS ALL THE INFO ABOUT THE CONTEXT IS INFO
   const { info } = useContext(PagesContext);
   const { session, account } = info;
   const [loading, setLoading] = useState(false);
+  const [enableModal, setEnableModal] = useState(false);
 
   // DECRYPTING THE USER ACCOUNT INFO
   const cuenta = JSON.parse(SecureLocalStorage.getItem("account"));
@@ -66,10 +68,14 @@ const HomeCustomer = () => {
     );
   });
 
-  console.log(session.session);
-
   return (
     <>
+      <ModalDeposito
+        active={enableModal}
+        setActive={setEnableModal}
+        titulo={"Hacer Deposito"}
+        cuentas={cuentasBank}
+      />
       {session.session ? (
         <div className="bg-white " style={{ height: "100vh", width: "100vw" }}>
           <NavbarDesktop />
@@ -77,10 +83,15 @@ const HomeCustomer = () => {
           <div className="bg-white p-4 w-11/12 m-auto">
             <div
               className={
-                "w-full flex m-auto p-2 mb-6 mt-15 justify-center text-2xl text-gray-700"
+                "w-full flex  gap-10 justify-between m-auto p-2 mb-6 mt-15  text-2xl text-gray-700"
               }
             >
-              Bienvenido {nameDisplay}
+              Bienvenido {nameDisplay}{" "}
+              <button className="btn-agregar shadow-sm" onClick={() => setEnableModal(true)}>
+                {" "}
+                <span className="btn-info">Depositar a la cuenta</span>
+                <FontAwesomeIcon icon={faPlusCircle} className="text-xl text-white" />
+              </button>
             </div>
             <div
               className={`bg-slate-100  justify-center grid grid-cols-1 p-3 gap-8 ${

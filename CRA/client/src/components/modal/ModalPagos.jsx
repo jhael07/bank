@@ -1,10 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./modal.css";
 import PagesContext from "../../context/PagesContext";
 import secureLocalStorage from "react-secure-storage";
 import Loading from "../spinner/Loading";
 import { addInversion } from "../../api/inversiones";
 import { pagar } from "../../api/pagos";
+import axios from "axios";
+import url, { basicAuth } from "../../api/api";
 
 const ModalPagos = ({ active, setActive, titulo, id }) => {
   const { info } = useContext(PagesContext);
@@ -13,8 +15,6 @@ const ModalPagos = ({ active, setActive, titulo, id }) => {
   // OBJECT WITH THE FORM INFORMATION
   const [loading, setLoading] = useState(false);
 
-  // DATE FOR THE PRESTAMO
-  const fecha = new Date();
   // PRESTAMO'S INFORMATION
   const [pago, setPago] = useState({
     idPrestamo: 0,
@@ -22,6 +22,18 @@ const ModalPagos = ({ active, setActive, titulo, id }) => {
     idCuota: 0,
     tipo: "",
   });
+
+  // DECRYPTING THE USER ACCOUNT INFO
+  const cuenta = JSON.parse(secureLocalStorage.getItem("account"));
+
+  const [cuentasBank, setCuentasBank] = useState([]);
+
+  const getBankAccounts = async () => {
+    const request = await axios.get(url + `cliente/cuentabanco/${cuenta.idCliente}`, {
+      headers: { Authorization: "Basic " + btoa(basicAuth) },
+    });
+    setCuentasBank(request.data);
+  };
 
   // FUNCTION TO ADD THE PRESTAMO TO THE USER'S ACCOUNT
   const agregar = async () => {
@@ -46,6 +58,16 @@ const ModalPagos = ({ active, setActive, titulo, id }) => {
     setActive(false);
     setLoading(false);
   };
+
+  useEffect(() => {
+    const mostrar = async () => {
+      setLoading(true);
+      await getBankAccounts();
+      setLoading(false);
+    };
+
+    mostrar();
+  }, [setCuentasBank]);
 
   return (
     <div className={`${active ? "visible" : "hidden"} absolute z-50 `}>
@@ -105,13 +127,17 @@ const ModalPagos = ({ active, setActive, titulo, id }) => {
 
               <div className="grid gap-2  ">
                 <h2 className="m-auto text-xl ">Número de Cuenta</h2>
-                <input
+                <select
                   type="number"
-                  className="border border-gray-700 rounded-md text-center m-auto"
-                  placeholder="# de cuenta que procesara el pago."
+                  className="border border-gray-700 rounded-md text-center m-auto p-2 w-4/6"
                   value={pago.idCuenta === 0 ? "" : pago.idCuenta}
                   onChange={(e) => setPago({ ...pago, idCuenta: +e.target.value })}
-                />
+                >
+                  <option>Elige la cuenta </option>
+                  {cuentasBank.map((cuenta) => (
+                    <option value={cuenta.idCuenta}>{cuenta.idCuenta}</option>
+                  ))}
+                </select>
               </div>
             </div>
             <div className=" mt-12">
