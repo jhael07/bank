@@ -20,13 +20,14 @@ export const pagar = async (idPrestamo, idCuota, tipo, idCliente, idCuenta) => {
       headers: { Authorization: "Basic " + btoa(basicAuth) },
     });
 
-    console.log(request);
-
-    showAlertMessage("Exito", "Pago procesado exitosamente", "success");
+    if (request.status === 200) {
+      showAlertMessage("Exito", "Pago procesado exitosamente", "success");
+      setTimeout(() => window.location.reload(), 3000);
+    }
+    if (request.response.status === 400) throw Error(request.response.data);
     if (request.status === 200) setTimeout(() => window.location.reload(), 2000);
   } catch (err) {
-    console.log(err);
-    showAlertMessage("Error", err.message, "error");
+    showAlertMessage("Error", err.response.data, "error");
     return false;
   }
 };

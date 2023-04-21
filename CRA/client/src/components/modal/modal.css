@@ -25,6 +25,10 @@
   @apply grid grid-cols-1 justify-center gap-8;
 }
 
+.contenido input {
+  @apply p-2;
+}
+
 .btn-agregar-form {
   @apply w-2/4;
 }

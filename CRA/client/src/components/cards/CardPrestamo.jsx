@@ -28,7 +28,8 @@ const CardPrestamo = ({ titulo, id, capitalInicial, inicio, final, interes }) =>
             {titulo} <span> Plazo: {n} meses</span>
           </div>
         </div>
-        <h1 className="m-auto flex text-xl font-normal">#{id}</h1>
+        <h3 className="m-auto flex text-sm font-normal">Codigo del Prestamo</h3>
+        <h1 className="m-auto flex text-xl font-normal"> #{id}</h1>
         <div className="m-auto flex text-xl font-normal text-gray-400  w-3/4">
           <div className="grid justify-center w-full">
             <div className="m-auto text-green-500">

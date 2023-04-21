@@ -30,6 +30,8 @@ const ModalPagos = ({ active, setActive, titulo, id }) => {
       return alert("Error", "Por favor ingresar el tipo de pago", "error");
     if (pago.idCuota === 0)
       return alert("Error", "Por favor ingresar el codigo de la cuota", "error");
+    if (pago.idCuenta === 0)
+      return alert("Error", "Por favor ingrese el número de la cuenta", "error");
     if (pago.idPrestamo === 0)
       return alert("Error", "Por favor ingresar el codigo del prestamo", "error");
     if (isNaN(pago.idPrestamo))
@@ -62,12 +64,13 @@ const ModalPagos = ({ active, setActive, titulo, id }) => {
           </h1>
           <br />
           <div className=" p-3 rounded ">
-            <div className=" grid-cols-2 grid  gap-8">
+            <div className=" contenido  gap-8">
               <div className="grid gap-2">
                 <h2 className="m-auto text-xl "> Metodo de pago</h2>
                 <input
                   type="text"
                   className="border border-gray-700 rounded-md text-center m-auto"
+                  placeholder="Escribe si es por tarjeta o efectivo."
                   value={pago.tipo}
                   onChange={(e) => setPago({ ...pago, tipo: e.target.value })}
                 />
@@ -78,6 +81,7 @@ const ModalPagos = ({ active, setActive, titulo, id }) => {
                 <input
                   type="number"
                   className="border border-gray-700 rounded-md text-center m-auto"
+                  placeholder="Codigo en la tarjeta de prestamo."
                   value={pago.idPrestamo === 0 ? "" : pago.idPrestamo}
                   onChange={(e) => setPago({ ...pago, idPrestamo: +e.target.value })}
                 />
@@ -89,6 +93,7 @@ const ModalPagos = ({ active, setActive, titulo, id }) => {
                   type="number"
                   value={pago.idCuota === 0 ? "" : pago.idCuota}
                   className="border border-gray-700 rounded-md text-center h-12 p-3"
+                  placeholder="Es el ID de la cuota."
                   onChange={(e) => {
                     setPago({ ...pago, idCuota: +e.target.value });
                   }}
@@ -100,6 +105,7 @@ const ModalPagos = ({ active, setActive, titulo, id }) => {
                 <input
                   type="number"
                   className="border border-gray-700 rounded-md text-center m-auto"
+                  placeholder="# de cuenta que procesara el pago."
                   value={pago.idCuenta === 0 ? "" : pago.idCuenta}
                   onChange={(e) => setPago({ ...pago, idCuenta: +e.target.value })}
                 />
