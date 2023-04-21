@@ -6,7 +6,7 @@ import Loading from "../spinner/Loading";
 import { addInversion } from "../../api/inversiones";
 import { pagar } from "../../api/pagos";
 
-const ModalPagos = ({ active, setActive, titulo }) => {
+const ModalPagos = ({ active, setActive, titulo, id }) => {
   const { info } = useContext(PagesContext);
   const { alert } = info;
 
@@ -18,6 +18,7 @@ const ModalPagos = ({ active, setActive, titulo }) => {
   // PRESTAMO'S INFORMATION
   const [pago, setPago] = useState({
     idPrestamo: 0,
+    idCuenta: 0,
     idCuota: 0,
     tipo: "",
   });
@@ -37,7 +38,7 @@ const ModalPagos = ({ active, setActive, titulo }) => {
     // ADDING SPINNER WILL WAITING FOR THE ASYNC CALL
     setLoading(true);
     // ADD THE PRESTAMO TO THE ACCOUNT
-    await pagar(pago.idPrestamo, pago.idCuota, pago.tipo);
+    await pagar(pago.idPrestamo, pago.idCuota, pago.tipo, id, pago.idCuenta);
 
     // HIDING THE MODAL AND ALSO THE SPINNER
     setActive(false);
@@ -61,7 +62,7 @@ const ModalPagos = ({ active, setActive, titulo }) => {
           </h1>
           <br />
           <div className=" p-3 rounded ">
-            <div className="">
+            <div className=" grid-cols-2 grid  gap-8">
               <div className="grid gap-2">
                 <h2 className="m-auto text-xl "> Metodo de pago</h2>
                 <input
@@ -72,7 +73,7 @@ const ModalPagos = ({ active, setActive, titulo }) => {
                 />
               </div>
 
-              <div className="grid gap-2 mt-6 ">
+              <div className="grid gap-2  ">
                 <h2 className="m-auto text-xl ">Codigo del Prestamo</h2>
                 <input
                   type="number"
@@ -82,7 +83,7 @@ const ModalPagos = ({ active, setActive, titulo }) => {
                 />
               </div>
 
-              <div className="grid justify-center gap-6 mt-6">
+              <div className="grid justify-center gap-6 ">
                 <h2 className="m-auto text-xl ">Codigo de la cuota</h2>
                 <input
                   type="number"
@@ -91,6 +92,16 @@ const ModalPagos = ({ active, setActive, titulo }) => {
                   onChange={(e) => {
                     setPago({ ...pago, idCuota: +e.target.value });
                   }}
+                />
+              </div>
+
+              <div className="grid gap-2  ">
+                <h2 className="m-auto text-xl ">Número de Cuenta</h2>
+                <input
+                  type="number"
+                  className="border border-gray-700 rounded-md text-center m-auto"
+                  value={pago.idCuenta === 0 ? "" : pago.idCuenta}
+                  onChange={(e) => setPago({ ...pago, idCuenta: +e.target.value })}
                 />
               </div>
             </div>

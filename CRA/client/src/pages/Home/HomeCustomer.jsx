@@ -1,13 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NavbarDesktop, NavbarMobile } from "../../components/Nav/index";
 import PagesContext from "../../context/PagesContext";
 import { Navigate } from "react-router-dom";
 import "../../index.css";
 import SecureLocalStorage from "react-secure-storage";
+import axios from "axios";
+import url, { basicAuth } from "../../api/api";
+import Loading from "../../components/spinner/Loading";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faX } from "@fortawesome/free-solid-svg-icons";
+
 const HomeCustomer = () => {
   // THE OBJ THAT HAS ALL THE INFO ABOUT THE CONTEXT IS INFO
   const { info } = useContext(PagesContext);
   const { session, account } = info;
+  const [loading, setLoading] = useState(false);
 
   // DECRYPTING THE USER ACCOUNT INFO
   const cuenta = JSON.parse(SecureLocalStorage.getItem("account"));
@@ -16,8 +23,26 @@ const HomeCustomer = () => {
     cuenta?.nombre?.length
   )}`;
 
-  const bankAccounts = cuenta?.cuentabancos?.map((bank) => {
-    console.log(bank);
+  const [cuentasBank, setCuentasBank] = useState([]);
+
+  const getBankAccounts = async () => {
+    const request = await axios.get(url + `cliente/cuentabanco/${cuenta.idCliente}`, {
+      headers: { Authorization: "Basic " + btoa(basicAuth) },
+    });
+    setCuentasBank(request.data);
+  };
+
+  useEffect(() => {
+    const mostrar = async () => {
+      setLoading(true);
+      await getBankAccounts();
+      setLoading(false);
+    };
+
+    mostrar();
+  }, [setCuentasBank]);
+
+  const bankAccounts = cuentasBank.map((bank) => {
     return (
       <>
         <div
@@ -62,7 +87,16 @@ const HomeCustomer = () => {
                 cuenta?.cuentabancos?.length > 1 && "lg:grid-cols-2"
               } `}
             >
-              {bankAccounts}
+              {loading ? (
+                <Loading text={"Las cuentas de banco se estan cargando"} />
+              ) : bankAccounts.length < 1 ? (
+                <div className="grid m-auto font-semibold text-2xl gap-4 mt-4">
+                  <FontAwesomeIcon icon={faX} className="m-auto text-6xl text-red-400" />
+                  <h1 className="text-gray-800">No existe ninguna cuenta.</h1>
+                </div>
+              ) : (
+                bankAccounts
+              )}
             </div>
           </div>
         </div>

@@ -40,7 +40,7 @@ const ModalDetallesPrestamo = ({ active, setActive, id, cuota }) => {
 
           <table>
             <tr className="bg-white border">
-              <th className="border border-gray-200 p-2">ID de pago</th>
+              <th className="border border-gray-200 p-2">ID de Cuota</th>
               <th className="border border-gray-200 p-2">Monto a Pagar</th>
               <th className="border border-gray-200 p-2">fecha de Pago</th>
               <th className="border border-gray-200 p-2">Pago Realizado</th>
@@ -51,7 +51,7 @@ const ModalDetallesPrestamo = ({ active, setActive, id, cuota }) => {
                 return (
                   <>
                     <tr>
-                      <td className="text-center w-28 bg-gray-200 border border-gray-200">
+                      <td className="text-center w-32 bg-gray-200 border border-gray-200">
                         {prestamo.idCuota}
                       </td>{" "}
                       <td className="text-center w-72 bg-gray-200 border border-gray-200">

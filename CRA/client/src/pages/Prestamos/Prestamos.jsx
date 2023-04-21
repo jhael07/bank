@@ -87,6 +87,7 @@ const Prestamos = () => {
         active={enableModalPagos}
         setActive={setEnableModalPagos}
         titulo={"Procesar Pago"}
+        id={clientInfo.idCliente}
       />
       {session ? (
         <div className="bg-white" style={{ height: "100vh", width: "100vw" }}>
