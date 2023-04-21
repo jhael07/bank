@@ -48,4 +48,12 @@
     width: 100% !important;
     @apply text-sm;
   }
+
+  #modal {
+    overflow-y: scroll;
+  }
+
+  .modal {
+    height: 60vh;
+  }
 }

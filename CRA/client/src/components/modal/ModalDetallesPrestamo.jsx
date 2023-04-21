@@ -24,11 +24,11 @@ const ModalDetallesPrestamo = ({ active, setActive, id, cuota }) => {
       className={`${
         active ? "visible" : "hidden"
       } modalDetalles h-80 w-11/12 flex justify-center shadow-xl
-    rounded-lg fixed`}
+    rounded-lg fixed z-40`}
       id="tableID"
     >
       <button
-        className="bg-red-600 hover:bg-red-700 fixed right-1 text-2xl top-2 h-12 text-white w-12 flex items-center justify-center p-3 rounded-full"
+        className="bg-red-600 hover:bg-red-700 z-50 fixed right-3 p-0 text-2xl top-2 h-12 text-white w-12 flex items-center justify-center  rounded-full"
         style={{ borderRadius: "100%" }}
         onClick={() => setActive(false)}
       >

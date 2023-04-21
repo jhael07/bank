@@ -49,7 +49,10 @@ const ModalPagos = ({ active, setActive, titulo, id }) => {
 
   return (
     <div className={`${active ? "visible" : "hidden"} absolute z-50 `}>
-      <div className={` modal border border-gray-400 z-50 shadow-xl relative rounded-lg `}>
+      <div
+        className={` modal border border-gray-400 z-50 shadow-xl relative rounded-lg `}
+        id="modal"
+      >
         <div className="modal-content">
           {loading ? (
             <div
