@@ -70,7 +70,7 @@ const ModalSolicitarPrestamo = ({ active, setActive, titulo }) => {
       idCliente,
       prestamoInfo.monto,
       prestamoInfo.interes,
-      prestamoInfo.tiempo,
+      prestamoInfo.tiempo
     );
 
     // HIDING THE MODAL AND ALSO THE SPINNER
@@ -95,7 +95,7 @@ const ModalSolicitarPrestamo = ({ active, setActive, titulo }) => {
           </h1>
           <br />
           <div className=" p-3 rounded ">
-            <div className="contenido">
+            <div className="">
               <div className="grid gap-2">
                 <h2 className="m-auto text-xl ">* Monto</h2>
                 <input
@@ -108,12 +108,12 @@ const ModalSolicitarPrestamo = ({ active, setActive, titulo }) => {
                 />
               </div>
 
-              <div className="grid gap-2">
+              <div className="grid gap-2 mt-6 ">
                 <h2 className="m-auto text-xl ">Interes</h2>
                 <h3 className="m-auto text-xl text-green-600">{prestamoInfo.interes}%</h3>
               </div>
 
-              <div className="grid justify-center gap-6">
+              <div className="grid justify-center gap-6 mt-6">
                 <h2 className="m-auto text-xl ">* Plazo:</h2>
                 <select
                   value={prestamoInfo.tiempo[0]}
