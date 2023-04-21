@@ -31,3 +31,22 @@ export const pagar = async (idPrestamo, idCuota, tipo, idCliente, idCuenta) => {
     return false;
   }
 };
+export const historial = async (idCliente) => {
+  try {
+    const data = {
+      idCliente,
+    };
+
+    const request = await axios.get(url + `pagos/historial/${idCliente}`, data, {
+      headers: { Authorization: "Basic " + btoa(basicAuth) },
+    });
+
+    if (request.response.status === 400) throw Error(request.response.data);
+  } catch (err) {
+    console.log(err);
+    console.log(basicAuth);
+
+    showAlertMessage("Error", err.response.data, "error");
+    return false;
+  }
+};

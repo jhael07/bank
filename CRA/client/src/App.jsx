@@ -5,6 +5,7 @@ import HomeCustomer from "./pages/Home/HomeCustomer";
 import PagesContextProvider from "./context/PagesContextProvider";
 import Prestamos from "./pages/Prestamos/Prestamos";
 import Inversiones from "./pages/Inversiones/Inversiones";
+import Historial from "./pages/Historial/Historial";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
           <Route element={<HomeCustomer />} path="/home" />
           <Route element={<Prestamos />} path="/prestamos" />
           <Route element={<Inversiones />} path="/inversiones" />
+          <Route element={<Historial />} path="/historial" />
           <Route
             path="*"
             element={

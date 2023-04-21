@@ -31,7 +31,7 @@ const NavbarDesktop = () => {
           <a href="/home">Inicio</a>
           <a href="/prestamos">Prestamos</a>
           <a href="/inversiones">Inversiones</a>
-          <a href="#">Historial</a>
+          <a href="/historial">Historial</a>
           <a href="/" className="logout text-gray-500" onClick={logout}>
             <FontAwesomeIcon icon={faPowerOff} size="xl" />
           </a>

@@ -92,13 +92,17 @@ const ModalPagos = ({ active, setActive, titulo, id }) => {
             <div className=" contenido  gap-8">
               <div className="grid gap-2">
                 <h2 className="m-auto text-xl "> Metodo de pago</h2>
-                <input
-                  type="text"
-                  className="border border-gray-700 rounded-md text-center m-auto"
-                  placeholder="Escribe si es por tarjeta o efectivo."
+                <select
+                  type="number"
+                  className="border border-gray-700 rounded-md text-center m-auto p-2 w-4/6"
                   value={pago.tipo}
                   onChange={(e) => setPago({ ...pago, tipo: e.target.value })}
-                />
+                >
+                  <option>Elige el tipo de pago</option>
+                  {["TARJETA", "EFECTIVO"].map((tipo) => (
+                    <option>{tipo}</option>
+                  ))}
+                </select>
               </div>
 
               <div className="grid gap-2  ">
