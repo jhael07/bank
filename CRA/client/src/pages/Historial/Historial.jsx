@@ -28,12 +28,15 @@ const Historial = () => {
   useEffect(() => {
     const mostrar = async () => {
       setLoading(true);
-      setHistorialInfo(await historial(clientInfo.idCliente));
+      const info = await historial(clientInfo.idCliente);
       setLoading(false);
+      setHistorialInfo(info.data);
     };
 
     mostrar();
   }, [setHistorialInfo]);
+
+  console.log(HistorialInfo);
   return (
     <>
       {/* MODAL WILL DISPLAY AS SOON AS ONE OF THE BUTTONS IS CLICK */}
@@ -60,7 +63,28 @@ const Historial = () => {
               {loading ? (
                 <Loading text={"El historial se esta cargando"} />
               ) : (
-                <p>{HistorialInfo}</p>
+                <table id="tabla">
+                  <thead>
+                    <tr>
+                      <th> ID cuota</th>
+                      <th> ID pago</th>
+                      <th> Fecha de realizacion</th>
+                      <th>codigo Comprobante</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {HistorialInfo.map((h) => {
+                      return (
+                        <tr className=" gap-2 border justify-center  border-gray-200">
+                          <td className=" text-center">{h.idCuota}</td>
+                          <td className=" text-center p-2"> {h.idPago}</td>
+                          <td className=" text-center p-2"> {h.fechaRealizado}</td>
+                          <td className=" text-center p-2">{h.codigoComprobante}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
               )}
             </div>
           </div>

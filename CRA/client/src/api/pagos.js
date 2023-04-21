@@ -31,22 +31,20 @@ export const pagar = async (idPrestamo, idCuota, tipo, idCliente, idCuenta) => {
     return false;
   }
 };
-export const historial = async (idCliente) => {
+export const historial = async (idCliente, setter) => {
   try {
-    const data = {
-      idCliente,
-    };
+    const request = await axios.get(
+      "https://banksystem-a1s4.onrender.com/api/v1/pagos/historial/" + idCliente,
 
-    const request = await axios.get(url + `pagos/historial/${idCliente}`, data, {
-      headers: { Authorization: "Basic " + btoa(basicAuth) },
-    });
+      {
+        headers: { Authorization: "Basic " + btoa(basicAuth) },
+      }
+    );
 
-    if (request.response.status === 400) throw Error(request.response.data);
+    return request;
   } catch (err) {
     console.log(err);
-    console.log(basicAuth);
-
-    showAlertMessage("Error", err.response.data, "error");
+    // showAlertMessage("Error", err, "error");
     return false;
   }
 };
