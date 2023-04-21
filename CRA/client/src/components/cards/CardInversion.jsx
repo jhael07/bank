@@ -2,10 +2,7 @@ import React, { useState } from "react";
 import "./media-query.css";
 import ModalDetallesPrestamo from "../modal/ModalDetallesPrestamo";
 
-const CardPrestamo = ({ titulo, id, capitalInicial, inicio, final, interes }) => {
-  // SHOW MODAL
-  const [active, setActive] = useState(false);
-
+const CardInversion = ({ titulo, id, capitalInicial, inicio, final, interes }) => {
   // INTERES
   const i = interes / 100 / 12;
 
@@ -19,10 +16,7 @@ const CardPrestamo = ({ titulo, id, capitalInicial, inicio, final, interes }) =>
 
   return (
     <>
-      <div
-        className="hover:scale-105 hover:cursor-pointer  transition-all active:bg-slate-200  bg-white w-11/12 m-auto rounded-bl-lg rounded-br-lg shadow-lg pb-4 grid gap-2"
-        onClick={() => setActive(true)}
-      >
+      <div className="hover:scale-105 hover:cursor-pointer  transition-all active:bg-slate-200  bg-white w-11/12 m-auto rounded-bl-lg rounded-br-lg shadow-lg pb-4 grid gap-2">
         <div className="titulo-card">
           <div className="w-3/4 justify-between m-auto flex">
             {titulo} <span> Plazo: {n} meses</span>
@@ -58,16 +52,8 @@ const CardPrestamo = ({ titulo, id, capitalInicial, inicio, final, interes }) =>
           </div>
         </div>
       </div>
-      <ModalDetallesPrestamo
-        active={active}
-        setActive={setActive}
-        id={id}
-        cuota={cuota}
-        interes={interes}
-        montoOriginal={capitalInicial / n}
-      />
     </>
   );
 };
 
-export default CardPrestamo;
+export default CardInversion;

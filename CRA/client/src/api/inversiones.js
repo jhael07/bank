@@ -7,16 +7,15 @@ import axios from "axios";
 const showAlertMessage = (title, info, type) => Swal.fire(title, info, type);
 
 // GETTING THE PRESTAMOS INFORMATION
-export const getPrestamoInfo = async (id) => {
+export const getInversionesInfo = async (id) => {
   try {
-    const request = await fetch(url + `prestamo/${id}`, {
+    const request = await fetch(url + `inversion/${id}`, {
       headers: {
         Authorization: "Basic " + btoa(basicAuth),
       },
     });
 
     const result = await request.json();
-    console.log(result);
 
     return result;
   } catch (err) {
@@ -25,9 +24,8 @@ export const getPrestamoInfo = async (id) => {
   }
 };
 
-// GETTING THE PRESTAMOS INFORMATION
-export const addPrestamo = async (id, monto, interes, tiempo, garante) => {
-  console.log(id, monto, interes, tiempo, garante);
+// GETTING THE INVERSION INFORMATION
+export const addInversion = async (id, monto, interes, tiempo) => {
   try {
     const date = new Date();
     const data = {
@@ -45,11 +43,11 @@ export const addPrestamo = async (id, monto, interes, tiempo, garante) => {
       }`,
     };
 
-    const request = await axios.post(url + `prestamo/new/${id}`, data, {
+    const request = await axios.post(url + `inversion/new/${id}`, data, {
       headers: { Authorization: "Basic " + btoa(basicAuth) },
     });
 
-    showAlertMessage("Exito", "Prestamo agregado existosamente", "success");
+    showAlertMessage("Exito", "Inversion generada existosamente", "success");
     if (request.status === 200) setTimeout(() => window.location.reload(), 3000);
   } catch (err) {
     showAlertMessage("Error", err.message, "error");

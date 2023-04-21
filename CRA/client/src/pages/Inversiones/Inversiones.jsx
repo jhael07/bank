@@ -2,13 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import { NavbarDesktop, NavbarMobile } from "../../components/Nav/index";
 import PagesContext from "../../context/PagesContext";
 import SecureLocalStorage from "react-secure-storage";
-import CardPrestamo from "../../components/cards/CardPrestamo";
-import { getPrestamoInfo } from "../../api/prestamos";
 import { Navigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
-import ModalSolicitarPrestamo from "../../components/modal/ModalSolicitarPrestamo";
+import { faPlusCircle, faX } from "@fortawesome/free-solid-svg-icons";
+import ModalHacerInversion from "../../components/modal/ModalHacerInversion";
 import Loading from "../../components/spinner/Loading";
+import { getInversionesInfo } from "../../api/inversiones";
+import CardInversion from "../../components/cards/CardInversion";
 
 const Inversiones = () => {
   // THE OBJ THAT HAS ALL THE INFO ABOUT THE CONTEXT IS INFO
@@ -23,7 +23,7 @@ const Inversiones = () => {
   const session = JSON.parse(SecureLocalStorage.getItem("account"));
 
   // STATE TO STORE THE PRESTAMOS INFO FOR EVERY USER
-  const [prestamosInfo, setPrestamosInfo] = useState([]);
+  const [inversionesInfo, setInversionesInfo] = useState([]);
 
   // USEEFFECT FOR GETTING ALL THE PRESTAMOS INFO
   useEffect(() => {
@@ -31,8 +31,8 @@ const Inversiones = () => {
       try {
         setLoading(true);
         const { idCliente } = clientInfo;
-        const prestamos = await getPrestamoInfo(idCliente);
-        setPrestamosInfo(prestamos);
+        const prestamos = await getInversionesInfo(idCliente);
+        setInversionesInfo(prestamos);
         setLoading(false);
       } catch (err) {
         console.log(err);
@@ -41,21 +41,18 @@ const Inversiones = () => {
     prestamos();
   }, []);
 
-  console.log(prestamosInfo);
-
   // MODAL STATES
   const [enableModal, setEnableModal] = useState(false);
 
-  const prestamosAccount = prestamosInfo?.map((bank) => {
+  const inversionesAccount = inversionesInfo?.map((bank) => {
     return (
-      <CardPrestamo
-        titulo={`Prestamo`}
-        id={bank.idPrestamo}
+      <CardInversion
+        titulo={`Inversión`}
+        id={bank.idInversion}
         capitalInicial={`${bank.monto}`}
         inicio={bank.fechaBeg}
         final={bank.fechaEnd}
         interes={bank.insteres}
-        garante={bank.garantium}
       />
     );
   });
@@ -63,7 +60,7 @@ const Inversiones = () => {
   return (
     <>
       {/* MODAL WILL DISPLAY AS SOON AS ONE OF THE BUTTONS IS CLICK */}
-      <ModalSolicitarPrestamo
+      <ModalHacerInversion
         active={enableModal}
         setActive={setEnableModal}
         titulo={"Solicitar prestamo"}
@@ -94,13 +91,18 @@ const Inversiones = () => {
             </div>
             <div
               className={`bg-slate-100  justify-center grid grid-cols-1 p-3 gap-8 ${
-                prestamosInfo?.length > 1 && "lg:grid-cols-2"
+                inversionesInfo?.length > 1 && "lg:grid-cols-2"
               } `}
             >
               {loading ? (
                 <Loading text={"Los prestamos se estan cargando."} />
+              ) : inversionesInfo.length < 1 ? (
+                <div className="grid m-auto font-semibold text-2xl gap-4 mt-4">
+                  <FontAwesomeIcon icon={faX} className="m-auto text-6xl text-red-400" />
+                  <h1 className="text-gray-800">No hay prestamos todavia.</h1>
+                </div>
               ) : (
-                prestamosAccount
+                inversionesAccount
               )}
             </div>
           </div>

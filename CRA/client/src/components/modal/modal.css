@@ -6,8 +6,19 @@
 }
 
 .modal-content {
-  @apply p-4 grid justify-center pt-12;
+  @apply p-4 grid justify-center pt-3;
   width: 75vw;
+}
+
+#tableID {
+  overflow-y: scroll;
+}
+
+.modalDetalles {
+  @apply bg-blue-400;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .contenido {

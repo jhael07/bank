@@ -135,34 +135,6 @@ const ModalSolicitarPrestamo = ({ active, setActive, titulo }) => {
                   ))}
                 </select>
               </div>
-
-              <div className="border border-gray-500 p-3 grid gap-2">
-                <h2 className="m-auto text-xl">Garantia: </h2>
-                <input
-                  type="text"
-                  className="border border-gray-700 rounded-md text-center m-auto"
-                  placeholder="Escribe el nombre del garante/tia"
-                  onChange={(e) => setGarante({ ...garante, nombre: e.target.value })}
-                />{" "}
-                <input
-                  type="text"
-                  className="border border-gray-700 rounded-md text-center m-auto"
-                  placeholder="Escribe el tipo de garantia"
-                  onChange={(e) => setGarante({ ...garante, tipo: e.target.value })}
-                />
-                <input
-                  type="text"
-                  className="border border-gray-700 rounded-md text-center m-auto"
-                  placeholder="Escribe el valor de la garantia"
-                  onChange={(e) => setGarante({ ...garante, valor: +e.target.value })}
-                />{" "}
-                <input
-                  type="text"
-                  className="border border-gray-700 rounded-md text-center m-auto"
-                  placeholder="Escribe la ubicación"
-                  onChange={(e) => setGarante({ ...garante, ubicacion: e.target.value })}
-                />
-              </div>
             </div>
             <div className=" mt-12">
               <button

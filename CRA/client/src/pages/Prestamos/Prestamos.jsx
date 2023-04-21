@@ -6,7 +6,7 @@ import CardPrestamo from "../../components/cards/CardPrestamo";
 import { getPrestamoInfo } from "../../api/prestamos";
 import { Navigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMoneyBill, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import { faPlusCircle, faX } from "@fortawesome/free-solid-svg-icons";
 import ModalSolicitarPrestamo from "../../components/modal/ModalSolicitarPrestamo";
 import Loading from "../../components/spinner/Loading";
 
@@ -106,6 +106,11 @@ const Prestamos = () => {
             >
               {loading ? (
                 <Loading text={"Los prestamos se estan cargando."} />
+              ) : prestamosInfo.length < 1 ? (
+                <div className="grid m-auto font-semibold text-2xl gap-4 mt-4">
+                  <FontAwesomeIcon icon={faX} className="m-auto text-6xl text-red-400" />
+                  <h1 className="text-gray-800">No hay prestamos todavia.</h1>
+                </div>
               ) : (
                 prestamosAccount
               )}
