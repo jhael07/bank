@@ -23,7 +23,7 @@ const ModalDetallesPrestamo = ({ active, setActive, id, cuota }) => {
     <div
       className={`${
         active ? "visible" : "hidden"
-      } modalDetalles  h-80 w-5/6 flex justify-center  shadow-xl
+      } modalDetalles h-80 w-5/6 flex justify-center shadow-xl
     rounded-lg fixed`}
       id="tableID"
     >
